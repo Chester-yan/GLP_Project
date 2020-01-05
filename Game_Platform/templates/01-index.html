@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" type="text/css" href="/static/css/01-index.css"> -->
+    <link href="{% static 'css/01-index.css' %}" rel="stylesheet">
+    <title>Game_Platform</title>
+    
+</head>
+<body>
+
+    <div id="nav">
+        <ul class="rigntnav">
+            <li>
+                <a href="#">註冊/登入</a>
+            </li>
+            <li>
+                <a href="#">追蹤</a>
+            </li>
+        </ul>
+
+        <ul class="leftnav">
+            <li>
+                <a href="#">LOGO</a>
+            </li>
+            <li>
+                <a href="#">直播</a>
+            </li>
+            <li>
+                <a href="#">影片搜尋</a>
+            </li>            
+            <li>
+                <a href="#">遊戲類型</a>
+            </li>            
+            <li>
+                <a href="#">更多</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="container">
+        <ul class="topsideN">
+            <li>
+                <a href="#">實況主排行榜</a>
+            </li>
+            <li>
+                <a href="#">直播中</a>
+            </li>
+            <li>
+                <a href="#">實況主搜尋</a>
+            </li>
+        </ul>
+        <div class="context-block">
+            <div class="simplebar-track vertical" style="visibility: visible;">
+                <div class="simplebar-scrollbar"></div>
+            </div>
+            <ul class="context">
+                <li id="li1">影片輪播</li>
+                <li id="li2">推薦分類</li>
+                <li id="li3">推薦頻道</li>
+                <li id="footer">底部資訊</li>
+            </ul>
+            
+        </div>
+        
+    </div>
+
+
+</body>
+</html>
