@@ -25,7 +25,7 @@ SECRET_KEY = 'cp-^&s@isl!f*u+_u+cx+0@2mhiahg@wm8j(qy@t3ak7nh2z*='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.43.59"]
 
 
 # Application definition
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'Game_Platform.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'GPL_1',
+        'USER': 'root',
+        'PASSWORD': 'c0630',
+        'HOST': 'localhost',
+        'PORT': 3306,
     }
 }
 
@@ -104,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hant'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 
