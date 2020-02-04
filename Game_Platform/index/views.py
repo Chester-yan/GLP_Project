@@ -6,3 +6,7 @@ from django.template import loader
 
 def index_views(request):
     return render(request,'01-index.html')
+
+def register_views(request):
+    return render(request,'02-register.html')
+

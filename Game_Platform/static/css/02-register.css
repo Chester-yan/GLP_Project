@@ -1,0 +1,44 @@
+/* 統一設置頁面樣式 */
+
+body{
+    /* 字體樣式 */
+    font: 20px 'Microsoft Yahei','微軟黑體','sans-serif'; 
+    color: rgb(140, 0, 255);
+    overflow: auto;
+}
+
+/* 清除默認樣式 */
+body,h1,h2,h3,h4,h5,h6,p,ul,ol{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+/* 整體排版 */
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 註冊頁樣式 */
+#register_page{
+    background: #72B01D;
+    padding: 50px;
+    margin: 50px;
+}
+
+#register_page input{
+    height: 20px;
+    width: 200px;
+    padding: 2px;
+    border: 5px;
+    
+}

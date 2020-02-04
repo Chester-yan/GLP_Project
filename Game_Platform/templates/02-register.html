@@ -1,35 +1,32 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>註冊頁面</title>
+    <link href="{% static 'css/02-register.css' %}" rel="stylesheet">
+
     <style>
-        #test1 {background-color: blue; }
+        
     </style>
 </head>
 <body>
-    <div id="test1">
-        <!-- iframe 連結開啟語法、test1.html -->
+    <div id="register_page">
+        <input type="text" name="uname">
+        <br>
+        <input type="text" name="upwd">
+        <br>
+        <input type="text" name="cpwd">
+        <br>
+        <input type="text" name="ubd">
+        <br>
+        <input type="text" name="uemail">
         
-        <iframe src="test2.html" width="200" height="200" frameborder="1" scrolling="no">
-            <ul>
-                <li>
-                    <a href="連結網址" target="_blank">另外開啟新視窗</a>
-                </li>
-                <li>
-                    <a href="連結網址" target="_self">在框架內開啟</a>
-                </li>
-                <li>
-                    <a href="連結網址" target="_parent">在父層開啟</a>
-                </li>
-            </ul>
-        </iframe>
-
-        <!-- iframe 連結開啟語法、test2.html -->
-
     </div>
+
     
 </body>
 </html>
