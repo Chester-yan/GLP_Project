@@ -4,39 +4,23 @@
 <html lang="en">
     
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" type="text/css" href="/static/css/01-index.css"> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{% static 'css/01-index.css' %}" rel="stylesheet">
     <title>Game_Platform</title>
-    <script>
-        function show()  //顯示隱藏層和彈出層
-            { 
-               var hideobj=document.getElementById("container"); 
-               container.style.display="block";  //顯示隱藏層 
-               container.style.height=document.body.clientHeight+"px";  //設定隱藏層的高度為當前頁面高度   px是字尾
-               document.getElementById("register_page").style.display="block";  //顯示彈出層 
-            } 
-        function hide()  //去除隱藏層和彈出層 `
-            { 
-               document.getElementById("container").style.display="none"; 
-               document.getElementById("register_page").style.display="none"; 
-            } 
-        function open_()
-            {
-                window.location.href="http://www.hpu.edu.cn";
-            }
-    </script>
-    
+    <script src="{% static 'js/01-index.js' %}"></script>
 </head>
+
 <body>
 
     <div class="index">
+
         <div id="nav">
-            <ul class="rigntnav">
+        
+            <ul class="rightnav">
                 <li>
-                    <a onclick="show();"  >註冊/登入</a>
+                    <a href="javascript:show();">註冊/登入</a>
                 </li>
                 <li>
                     <a href="#">追蹤</a>
@@ -60,9 +44,11 @@
                     <a href="#">更多</a>
                 </li>
             </ul>
+
         </div>
-    
-        <div id="container">
+
+        <div id="container" >
+
             <ul class="sidebar">
                 <li>
                     <a href="#">實況主排行榜</a>
@@ -74,18 +60,26 @@
                     <a href="#">實況主搜尋</a>
                 </li>
             </ul>
+
             <div class="main">
                 <ul class="context">
                     <li id="li1">影片輪播</li>
                     <li id="li2">推薦分類</li>
                     <li id="li3">推薦頻道</li>
-                    <!-- <li id="footer">底部資訊</li> -->
+                    <li id="footer">底部資訊</li>
                 </ul>
             </div>
+
         </div>
+
+        <div id="register_block" onclick="cancle(this);">
+            
+            <iframe id="show_register" frameborder='0' src="{% url 'register' %}" ></iframe>
+    
+        </div>  
+
     </div>
 
-
-
 </body>
+
 </html>
