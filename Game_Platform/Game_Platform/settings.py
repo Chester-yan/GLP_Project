@@ -23,9 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cp-^&s@isl!f*u+_u+cx+0@2mhiahg@wm8j(qy@t3ak7nh2z*='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.43.59"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sslserver',
     'index',
 ]
 
@@ -132,5 +134,23 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static/"),
 ]
+
+SESSION_COOKIE_AGE = 60*60*24
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+if DEBUG is True:
+    SESSION_COOKIE_SECURE = False
+else:
+    SESSION_COOKIE_SECURE = True
+    
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_HSTS_SECONDS = 60
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_REFERRER_POLICY = "same-origin"
+
 
 

@@ -9,13 +9,14 @@
     <title>註冊頁面</title>
     <link href="{% static 'css/02-register.css' %}" rel="stylesheet">
 
-
 </head>
 <body>
+    
+    {% csrf_token %}
     <div id="register_page">
-
+        
         <div id="top_logo">
-            <p>LOGO</p>
+            <p>Pilive</p>
         </div>
 
         <div id="LnR">
@@ -25,36 +26,45 @@
         
         <div id="content">
             
-            <div id="uname_label">
+            <div id="info_input">
                 <label for="uname">使用者名稱</label>
                 <input type="text" name="uname" placeholder="設定使用者名稱" id="uname">
             </div>
 
-            <div id="upwd_label">
+            <div id="info_input">
                 <label for="upwd">密碼</label>
                 <input type="password" name="upwd" placeholder="設定密碼" id="upwd">
             </div>
 
-            <div id="cpwd_label">
+            <div id="info_input">
                 <label for="cpwd">再次輸入密碼確認</label>
                 <input type="password" name="cpwd" placeholder="密碼確認" id="cpwd">
             </div>
 
-            <div id="ubd_label">
+            <div id="info_input">
                 <label for="ubd">生日</label>
-                <input type="text" name="ubd" placeholder="請輸入生日" id="ubd">
+                <div id="select_bd">
+
+                    <select id="ddl_year">
+                        <option value="-1">年</option>
+                    </select>
+                    <select id="ddl_month">
+                        <option value="-1">月</option>
+                    </select>
+                    <select id="ddl_day">
+                        <option value="-1">日</option>
+                    </select>
+                </div>
             </div>
 
-            <div id="uemail_label">
+            <div id="info_input">
                 <label for="uemail">信箱</label>
                 <input type="text" name="uemail" placeholder="請輸入信箱" id="uemail">
             </div>
 
             <div id="Legal_Notices">
-                <p>點擊「註冊」即代表您已閱讀並瞭解服務條款及隱私權聲明。</p>
+                <p>點擊「註冊」即代表您已閱讀並瞭解<a href="#">服務條款</a>及<a href="#">隱私權聲明</a>。</p>
             </div>
-
-            
             
         </div>
 
@@ -62,24 +72,81 @@
             <a>註冊</a>
         </div>
 
-        <div id="facebook_link">
-            <p>facebook</p>
+        <div id="or_label">
+            <div></div>
+            <p>或</p>
+            <div></div>
         </div>
         
+        <div id="facebook_link">
+            <!-- <p>使用facebook登入</p> -->
+            <!-- <button onclick="checkLoginState()">使用facebook登入</button> -->
+            <!-- <button onclick="logout()">登出facebook</button> -->
+            <div id="fb-root"></div>
 
+            <div class="fb-login-button" 
+            data-width="" 
+            data-size="large" 
+            data-button-type="login_with" 
+            data-auto-logout-link="false" 
+            data-use-continue-as="false"></div>
+        </div>
+            
+        <div>
+            
 
-  
-  
-  
-  
-  
-
-
-
-
+        </div>
    
     </div>
 
     
+    <!-- 
+        <fb:login-button 
+        scope="public_profile,email"
+        onlogin="checkLoginState();">
+    </fb:login-button> -->
+    
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{% static 'js/02-register.js' %}"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v6.0&appId=170092130952551&autoLogAppEvents=1"></script>
+
+<script>
+
+
+
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '170092130952551',
+            xfbml      : true,
+            version    : 'v6.0'
+          });
+          FB.AppEvents.logPageView();
+        };
+      
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+
+        FB.login(function(response) {
+            // handle the response
+        }, {scope: 'public_profile,email'});
+
+      FB.login(function(response) {
+        if (response.status === 'connected') {
+          // Logged into your webpage and Facebook.
+        } else {
+          // The person is not logged into your webpage or we are unable to tell. 
+        }
+      });
+
+
+
+
+  </script>
+
 </html>

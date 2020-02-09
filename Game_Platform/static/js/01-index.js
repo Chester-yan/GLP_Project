@@ -1,6 +1,6 @@
 
+var regi_block = document.getElementById("register_block");
 function dis_regi() {
-    regi_block = document.getElementById("register_block");
     regi_block.style.display = "none";
 }
 

@@ -28,9 +28,8 @@ body{
 
 #register_page{
     background: #72B01D;
-    padding: 50px;
+    padding: 35px 50px 50px 50px;
     margin: 50px;
-    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,9 +39,17 @@ body{
 
 /* logo樣式 */
 #top_logo{
-    width: 100%;
-    height: 50px;
+    width: 120px;
+    height: 45px;
+    font: 40px 'Prompt', sans-serif;
+    line-height: 50px;
+    color: #72B01D;
+    background: rgb(255, 255, 255);
+    border: 4px solid rgb(255, 238, 0);
+    border-radius: 12px;
+    filter: drop-shadow(0px 0px 6px rgba(93, 93, 93, 0.7));
     display: flex;
+    justify-content:center;
     order: 1;
 }
 
@@ -51,17 +58,18 @@ body{
     width: 100%;
     height: 50px;
     font-size: 20px;
+    margin-top: 20px;
     display: flex;
     flex-direction:row;
     order: 2;
-    border-bottom: 1px solid rgb(224, 224, 224);
 }
 
 
 #LnR>a{
     width: 50%;
+    line-height: 50px;
+    border-bottom: 1px solid rgb(224, 224, 224);
     display:inline-flex;
-    align-items:center;
     justify-content:center;
     cursor: pointer;
 }
@@ -82,7 +90,7 @@ body{
     order: 3;
 }
 
-#content>div{
+div#info_input{
     width: 100%;
     height: 70px;
     display: flex;
@@ -110,27 +118,65 @@ body{
     -moz-box-sizing: border-box;   
 }
 
-#content input:focus{
+input:focus{
+    outline: none;
+    border-radius: 6px;
+    box-shadow: inset 0px 0px 0px 3px rgb(255, 238, 0);
+}
+
+/* 生日選單樣式 */
+
+div#select_bd{
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#info_input select{
+    width: 100px;
     height: 30px;
-    border: 2px solid #72B01D;
+    color: rgb(129, 129, 129);
+    border-color: rgb(255, 255, 255);
+    text-align: center;
+    text-align-last: center;
 }
 
+select:focus{
+    outline: none;
+    border-radius: 6px;
+    box-shadow: inset 0px 0px 0px 3px rgb(255, 238, 0);
+}
+
+/* 法律聲明樣式 */
 #Legal_Notices{
+    height: 40px;
     background: #72B01D;
-
-    border-bottom: 1px solid rgb(224, 224, 224);
-
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
 }
+
+#Legal_Notices>p>a{
+    color: rgb(255, 238, 0);
+}
+
+#Legal_Notices>p>a:hover{
+    font: bold;
+    text-decoration: underline;
+}
+
+
 
 /* 註冊按鈕 */
 #sendinfo{
     width: 100%;
-    height: 50px;
+    height: 30px;
     font-size: 20px;
-    /* display: flex; */
-    /* flex-direction:row; */
-    /* align-items: center; */
-    /* justify-self: center; */
+    /* border-top: 1px solid rgb(224, 224, 224); */
+    background: rgb(182, 211, 55);
+    margin-bottom: 10px;
     order: 4;
 
 }
@@ -139,26 +185,67 @@ body{
 #sendinfo>a{
     width: 100%;
     height: 100%;
+    color: rgb(255, 255, 255);
     display:inline-flex;
     align-items:center;
     justify-content:center;
     cursor: pointer;
 }
 
+#sendinfo>a:hover{
+    color: dimgrey;
+    background: rgb(255, 238, 0);
+}
+
+/* "或"標籤區隔樣式 */
+#or_label{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    order: 4;
+
+}
 
 
 
+#or_label div{
+    width: 100%;
+    height: 1px;
+    background: rgb(255, 255, 255);
+}
+
+#or_label p{
+    font-size: 10px;
+    padding: 10px ;
+    display: inline-flex;
+    text-align: center;
+    justify-content: center;
+}
 
 
 
 /* facebook連結樣式 */
 #facebook_link{
-    width: 100%;
-    height: 20px;
-    font-size: 10px;
-    display: flex;
-    order: 4;
-
+    /* width: 100%; */
+    /* height: 30px; */
+    /* font: 20 'San Francisco',normal; */
+    /* font-size: 20px; */
+    /* background: rgb(66, 103, 178); */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    order: 5;
 }
+
+
+
+
+
 
 
