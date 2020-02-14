@@ -6,98 +6,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>註冊頁面</title>
-    <link href="{% static 'css/02-register.css' %}" rel="stylesheet">
+    <title>
+        {% block title %}
+        註冊頁面
+        {% endblock title %}
+    </title>
 
+    <link href="{% static 'css/02-register.css' %}" rel="stylesheet">
+    
 </head>
 <body>
     
-    {% csrf_token %}
-    <div id="register_page">
+    {% block all_page %}
+    <div class="register_page">
         
-        <div id="top_logo">
+        <div class="top_logo">
             <p>Pilive</p>
         </div>
 
-        <div id="LnR">
-            <a>登入</a>
-            <a>註冊</a>
+        <div class="LnR">
+            <a href="/03-login">登入</a>
+            <a href="/02-register">註冊</a>
         </div>
         
-        <div id="content">
-            
-            <div id="info_input">
-                <label for="uname">使用者名稱</label>
-                <input type="text" name="uname" placeholder="設定使用者名稱" id="uname">
-            </div>
-
-            <div id="info_input">
-                <label for="upwd">密碼</label>
-                <input type="password" name="upwd" placeholder="設定密碼" id="upwd">
-            </div>
-
-            <div id="info_input">
-                <label for="cpwd">再次輸入密碼確認</label>
-                <input type="password" name="cpwd" placeholder="密碼確認" id="cpwd">
-            </div>
-
-            <div id="info_input">
-                <label for="ubd">生日</label>
-                <div id="select_bd">
-
-                    <select id="ddl_year">
-                        <option value="-1">年</option>
-                    </select>
-                    <select id="ddl_month">
-                        <option value="-1">月</option>
-                    </select>
-                    <select id="ddl_day">
-                        <option value="-1">日</option>
-                    </select>
+        <div class="regi_form">
+            <form action="{% url 'reg' %}" method="POST">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                <div class="regi_div">
+                    <p>{{ field.label }}</p>
+                    {{ field }}
+                </div>                    
+                {% endfor %}
+                    
+                <!-- <div class="info_input">
+                    <label for="uname">使用者名稱</label>
+                    <input type="text" name="uname" placeholder="設定使用者名稱" id="uname">
+                    <span>{{ errMsg }}</span>
                 </div>
-            </div>
 
-            <div id="info_input">
-                <label for="uemail">信箱</label>
-                <input type="text" name="uemail" placeholder="請輸入信箱" id="uemail">
-            </div>
+                <div class="info_input">
+                    <label for="upwd">密碼</label>
+                    <input type="password" name="upwd" placeholder="設定密碼" class="upwd">
+                </div>
+    
+                <div class="info_input">
+                    <label for="cpwd">再次輸入密碼確認</label>
+                    <input type="password" name="cpwd" placeholder="密碼確認" class="cpwd">
+                </div>
+    
+                <div class="info_input">
+                    <label for="ubd">生日</label>
+                    <input type="text" name="ubd" placeholder="yyyy-mm-dd" class="ubd">
+                    <input type="text" name="ubd" class="ubd" list>
 
-            <div id="Legal_Notices">
-                <p>點擊「註冊」即代表您已閱讀並瞭解<a href="#">服務條款</a>及<a href="#">隱私權聲明</a>。</p>
-            </div>
-            
+                    <div id="select_bd">
+    
+                        <select id="bd_year">
+                            <option value="-1" class="bd_y">年</option>
+                        </select>
+                        <select id="bd_month">
+                            <option value="-1" class="bd_m">月</option>
+                        </select>
+                        <select id="bd_day">
+                            <option value="-1" class="bd_d">日</option>
+                        </select>
+                        
+                    </div>
+                </div>
+    
+                <div class="info_input">
+                    <label for="uemail">信箱</label>
+                    <input type="email" name="uemail" placeholder="請輸入信箱" id="uemail">
+                </div> -->
+    
+                <div class="Legal_Notices">
+                    <p>點擊「註冊」即代表您已閱讀並瞭解<a href="#">服務條款</a>及<a href="https://www.privacypolicies.com/privacy/view/9bcc6195919f776a5e42ba6b16c63b1a">隱私權聲明</a>。</p>
+                </div>
+    
+                <div class="sendinfo" >
+                    <input type="submit" value="註冊"> 
+                </div>
+
+            </form>
+
         </div>
 
-        <div id="sendinfo" >
-            <a>註冊</a>
-        </div>
-
-        <div id="or_label">
+        <div class="or_label">
             <div></div>
             <p>或</p>
             <div></div>
         </div>
         
-        <div id="facebook_link">
+        <div class="facebook_link">
             <!-- <p>使用facebook登入</p> -->
-            <!-- <button onclick="checkLoginState()">使用facebook登入</button> -->
-            <!-- <button onclick="logout()">登出facebook</button> -->
             <div id="fb-root"></div>
 
             <div class="fb-login-button" 
-            data-width="" 
-            data-size="large" 
-            data-button-type="login_with" 
-            data-auto-logout-link="false" 
-            data-use-continue-as="false"></div>
+                data-width="" 
+                data-size="large" 
+                data-button-type="login_with" 
+                data-auto-logout-link="false" 
+                data-use-continue-as="false">
+            </div>
         </div>
             
-        <div>
-            
-
-        </div>
-   
     </div>
+    {% endblock all_page %}
 
     
     <!-- 
@@ -107,46 +123,22 @@
     </fb:login-button> -->
     
 </body>
+
+{% block style %}
+    
+{% endblock style %}
+    
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{% static 'js/02-register.js' %}"></script>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v6.0&appId=170092130952551&autoLogAppEvents=1"></script>
-
+<script async defer crossorigin="anonymous" 
+src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v6.0&appId=170092130952551
+&autoLogAppEvents=1"></script>
 <script>
-
-
-
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '170092130952551',
-            xfbml      : true,
-            version    : 'v6.0'
-          });
-          FB.AppEvents.logPageView();
-        };
-      
-        (function(d, s, id){
-           var js, fjs = d.getElementsByTagName(s)[0];
-           if (d.getElementById(id)) {return;}
-           js = d.createElement(s); js.id = id;
-           js.src = "https://connect.facebook.net/en_US/sdk.js";
-           fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'facebook-jssdk'));
-
-        FB.login(function(response) {
-            // handle the response
-        }, {scope: 'public_profile,email'});
-
-      FB.login(function(response) {
-        if (response.status === 'connected') {
-          // Logged into your webpage and Facebook.
-        } else {
-          // The person is not logged into your webpage or we are unable to tell. 
-        }
-      });
-
-
-
-
-  </script>
+    /*
+    var ubd = document.getElementById('bd_y');
+    console.log(ubd);
+    alert(ubd);
+    */
+</script>
 
 </html>

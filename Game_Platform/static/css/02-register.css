@@ -1,11 +1,23 @@
+/* 樣式設置順序 
+
+    尺寸
+    邊距
+    顏色
+    字體
+    效果
+    位置
+    
+*/
+
 /* 統一設置頁面樣式 */
 
 body{
     /* 字體樣式 */
-    font: 10px 'Microsoft Yahei','微軟黑體','sans-serif'; 
     color: rgb(255, 255, 255);
+    font: 10px 'Microsoft Yahei','微軟黑體','sans-serif'; 
     overflow: auto;
 }
+
 
 /* 清除默認樣式 */
 body,div,h1,h2,h3,h4,h5,h6,p,ul,ol{
@@ -19,6 +31,7 @@ a{
     text-decoration: none;
 }
 
+
 /* 整體排版 */
 body{
     display: flex;
@@ -26,7 +39,8 @@ body{
     align-items: center;
 }
 
-#register_page{
+.register_page{
+    width: 350px;
     background: #72B01D;
     padding: 35px 50px 50px 50px;
     margin: 50px;
@@ -38,51 +52,49 @@ body{
 
 
 /* logo樣式 */
-#top_logo{
+.top_logo{
     width: 120px;
     height: 45px;
+    border: 4px solid rgb(255, 238, 0);
+    border-radius: 12px;
+    filter: drop-shadow(0px 0px 6px rgba(93, 93, 93, 0.7));
     font: 40px 'Prompt', sans-serif;
     line-height: 50px;
     color: #72B01D;
     background: rgb(255, 255, 255);
-    border: 4px solid rgb(255, 238, 0);
-    border-radius: 12px;
-    filter: drop-shadow(0px 0px 6px rgba(93, 93, 93, 0.7));
     display: flex;
     justify-content:center;
     order: 1;
 }
 
+
 /* 註冊與登入連結樣式 */
-#LnR{
+.LnR{
     width: 100%;
     height: 50px;
-    font-size: 20px;
     margin-top: 20px;
+    font-size: 20px;
     display: flex;
     flex-direction:row;
     order: 2;
 }
 
-
-#LnR>a{
+.LnR a{
     width: 50%;
-    line-height: 50px;
     border-bottom: 1px solid rgb(224, 224, 224);
+    line-height: 50px;
+    cursor: pointer;
     display:inline-flex;
     justify-content:center;
-    cursor: pointer;
 }
 
-#LnR>a:hover{
+.LnR a:hover{
     border-bottom: 3px solid rgb(255, 238, 0);
 }
 
 
-
-
 /* 註冊內容樣式 */
-#content{
+.regi_form{
     width: 100%;
     padding: 5px;
     display: flex;
@@ -90,43 +102,41 @@ body{
     order: 3;
 }
 
-div#info_input{
+.regi_div{
     width: 100%;
     height: 70px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
 }
 
-#content label{
+.regi_div p{
+    padding: 3px;
+    color: rgb(255, 255, 255);
     font-size: 15px;
     text-align: center;
-    color: rgb(255, 255, 255);
-    padding: 3px;
 }
 
-
-#content input{
+.info_input {
     width: 100%;
     height: 30px;
-    font-size: 10px;
     padding: 5px 10px;
     border: 5px;
     border-radius: 6px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;   
+    font-size: 10px;
 }
 
 input:focus{
-    outline: none;
     border-radius: 6px;
     box-shadow: inset 0px 0px 0px 3px rgb(255, 238, 0);
+    outline: none;
 }
 
-/* 生日選單樣式 */
 
-div#select_bd{
+/* 生日選單樣式 */
+#select_bd{
     width: 100%;
     display: inline-flex;
     flex-direction: row;
@@ -134,11 +144,11 @@ div#select_bd{
     justify-content: space-between;
 }
 
-#info_input select{
+.info_input select{
     width: 100px;
     height: 30px;
-    color: rgb(129, 129, 129);
     border-color: rgb(255, 255, 255);
+    color: rgb(129, 129, 129);
     text-align: center;
     text-align-last: center;
 }
@@ -149,56 +159,58 @@ select:focus{
     box-shadow: inset 0px 0px 0px 3px rgb(255, 238, 0);
 }
 
+
 /* 法律聲明樣式 */
-#Legal_Notices{
+.Legal_Notices{
     height: 40px;
     background: #72B01D;
+    line-height: 30px;
     display:inline-flex;
-    align-items:center;
     justify-content:center;
 }
 
-#Legal_Notices>p>a{
+.Legal_Notices a[href]{
     color: rgb(255, 238, 0);
 }
 
-#Legal_Notices>p>a:hover{
+.Legal_Notices a:hover{
     font: bold;
     text-decoration: underline;
 }
 
 
-
 /* 註冊按鈕 */
-#sendinfo{
+.sendinfo{
     width: 100%;
     height: 30px;
-    font-size: 20px;
-    /* border-top: 1px solid rgb(224, 224, 224); */
-    background: rgb(182, 211, 55);
     margin-bottom: 10px;
+    background: rgb(182, 211, 55);
     order: 4;
-
 }
 
-
-#sendinfo>a{
+.sendinfo>input{
     width: 100%;
     height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
     color: rgb(255, 255, 255);
+    font-size: 18px;
+    cursor: pointer;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    cursor: pointer;
 }
 
-#sendinfo>a:hover{
+.sendinfo input:hover{
     color: dimgrey;
     background: rgb(255, 238, 0);
 }
 
+
 /* "或"標籤區隔樣式 */
-#or_label{
+.or_label{
     width: 100%;
     height: 40px;
     margin-bottom: 10px;
@@ -208,38 +220,29 @@ select:focus{
     align-items: center;
     justify-content: center;
     order: 4;
-
 }
 
-
-
-#or_label div{
+.or_label div{
     width: 100%;
     height: 1px;
     background: rgb(255, 255, 255);
 }
 
-#or_label p{
-    font-size: 10px;
+.or_label p{
     padding: 10px ;
+    font-size: 10px;
     display: inline-flex;
     text-align: center;
     justify-content: center;
 }
 
 
-
 /* facebook連結樣式 */
-#facebook_link{
-    /* width: 100%; */
-    /* height: 30px; */
-    /* font: 20 'San Francisco',normal; */
-    /* font-size: 20px; */
-    /* background: rgb(66, 103, 178); */
+.facebook_link{
+    cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     order: 5;
 }
 

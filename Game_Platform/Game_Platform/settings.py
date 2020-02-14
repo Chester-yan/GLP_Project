@@ -23,8 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cp-^&s@isl!f*u+_u+cx+0@2mhiahg@wm8j(qy@t3ak7nh2z*='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'werkzeug_debugger_runserver',
+    'django_extensions',
+
     'sslserver',
     'index',
 ]
@@ -138,6 +142,7 @@ STATICFILES_DIRS = [
 SESSION_COOKIE_AGE = 60*60*24
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
+# 取得HTTPS認可設定
 if DEBUG is True:
     SESSION_COOKIE_SECURE = False
 else:
@@ -153,4 +158,8 @@ SECURE_HSTS_PRELOAD = True
 SECURE_REFERRER_POLICY = "same-origin"
 
 
-
+# AMDIN CONFIGURATION
+ADMINS = [('chesteryan', 'chesterdesigner@gmail.com')]
+ 
+# EMAIL CONFIGURATION
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

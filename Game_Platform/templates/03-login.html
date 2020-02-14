@@ -1,0 +1,60 @@
+{% extends '02-register.html' %}
+
+
+{% block title %}
+    登入頁面
+{% endblock title %}
+
+
+{% block all_page %}
+<div id="register_page">
+        
+    <div id="top_logo">
+        <p>Pilive</p>
+    </div>
+
+    <div id="LnR">
+        <a href="/03-login">登入</a>
+        <a href="/02-register">註冊</a>
+    </div>
+    
+    <div id="content">
+
+        <div id="info_input">
+            <label for="uemail">信箱</label>
+            <input type="text" name="uemail" placeholder="請輸入信箱" id="uemail">
+        </div>
+
+        <div id="info_input">
+            <label for="upwd">密碼</label>
+            <input type="password" name="upwd" placeholder="設定密碼" id="upwd">
+        </div>
+
+    </div>
+
+    <div id="sendinfo" >
+        <a>登入</a>
+    </div>
+
+    <div id="or_label">
+        <div></div>
+        <p>或</p>
+        <div></div>
+    </div>
+    
+    <div id="facebook_link">
+        <!-- <p>使用facebook登入</p> -->
+        <div id="fb-root"></div>
+
+        <div class="fb-login-button" 
+            data-width="" 
+            data-size="large" 
+            data-button-type="login_with" 
+            data-auto-logout-link="false" 
+            data-use-continue-as="false">
+        </div>
+    </div>
+        
+</div>
+{% endblock all_page %}
+    
