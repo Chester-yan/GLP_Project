@@ -31,19 +31,6 @@
         
         <div class="regi_form">
             <form action="{% url 'reg' %}" method="POST">{% csrf_token %}
-                    
-<!--                     
-                    {% for field in form %}
-                        <span>{{ field.errors }}</span>
-                    {% endfor %} -->
-                        
-                    <!-- {% if form.errors %}
-                        <span>{{ errorMsg }}</span>
-                    {% endif %}                     -->
-
-                    <!-- {% if form.errors %}
-                        <span>{{ form.field.errors }}</span>
-                    {% endif %}                      -->
                 
                 {% for field in form %}
                 <div class="regi_div">
@@ -53,12 +40,10 @@
                         {{ field }}
                     </div>
                     
-                    {% if form.errors %}
-                        <span>{{ field.errors }}</span>
-                    {% endif %}
-                        
-
                 </div>                    
+                {% if field.errors %}
+                    <span>{{ field.errors }}</span>
+                {% endif %}
                 {% endfor %}
                     
                 <div class="Legal_Notices">
