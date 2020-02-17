@@ -30,57 +30,37 @@
         </div>
         
         <div class="regi_form">
-            <form action="{% url 'reg' %}" method="POST">
-                {% csrf_token %}
+            <form action="{% url 'reg' %}" method="POST">{% csrf_token %}
+                    
+<!--                     
+                    {% for field in form %}
+                        <span>{{ field.errors }}</span>
+                    {% endfor %} -->
+                        
+                    <!-- {% if form.errors %}
+                        <span>{{ errorMsg }}</span>
+                    {% endif %}                     -->
+
+                    <!-- {% if form.errors %}
+                        <span>{{ form.field.errors }}</span>
+                    {% endif %}                      -->
                 
                 {% for field in form %}
                 <div class="regi_div">
-                    <p>{{ field.label }}</p>
-                    {{ field }}
+
+                    <label for="field.labels" >{{ field.label }}</label>
+                    <div class="input_div">
+                        {{ field }}
+                    </div>
+                    
+                    {% if form.errors %}
+                        <span>{{ field.errors }}</span>
+                    {% endif %}
+                        
+
                 </div>                    
                 {% endfor %}
                     
-                <!-- <div class="info_input">
-                    <label for="uname">使用者名稱</label>
-                    <input type="text" name="uname" placeholder="設定使用者名稱" id="uname">
-                    <span>{{ errMsg }}</span>
-                </div>
-
-                <div class="info_input">
-                    <label for="upwd">密碼</label>
-                    <input type="password" name="upwd" placeholder="設定密碼" class="upwd">
-                </div>
-    
-                <div class="info_input">
-                    <label for="cpwd">再次輸入密碼確認</label>
-                    <input type="password" name="cpwd" placeholder="密碼確認" class="cpwd">
-                </div>
-    
-                <div class="info_input">
-                    <label for="ubd">生日</label>
-                    <input type="text" name="ubd" placeholder="yyyy-mm-dd" class="ubd">
-                    <input type="text" name="ubd" class="ubd" list>
-
-                    <div id="select_bd">
-    
-                        <select id="bd_year">
-                            <option value="-1" class="bd_y">年</option>
-                        </select>
-                        <select id="bd_month">
-                            <option value="-1" class="bd_m">月</option>
-                        </select>
-                        <select id="bd_day">
-                            <option value="-1" class="bd_d">日</option>
-                        </select>
-                        
-                    </div>
-                </div>
-    
-                <div class="info_input">
-                    <label for="uemail">信箱</label>
-                    <input type="email" name="uemail" placeholder="請輸入信箱" id="uemail">
-                </div> -->
-    
                 <div class="Legal_Notices">
                     <p>點擊「註冊」即代表您已閱讀並瞭解<a href="#">服務條款</a>及<a href="https://www.privacypolicies.com/privacy/view/9bcc6195919f776a5e42ba6b16c63b1a">隱私權聲明</a>。</p>
                 </div>
@@ -133,12 +113,5 @@
 <script async defer crossorigin="anonymous" 
 src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v6.0&appId=170092130952551
 &autoLogAppEvents=1"></script>
-<script>
-    /*
-    var ubd = document.getElementById('bd_y');
-    console.log(ubd);
-    alert(ubd);
-    */
-</script>
 
 </html>

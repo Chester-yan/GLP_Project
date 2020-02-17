@@ -56,3 +56,51 @@
 	window.onload = myfun;
 </script>
 </html>
+
+
+
+
+
+
+
+                 <div class="info_input">
+                    <label for="uname">使用者名稱</label>
+                    <input type="text" name="uname" placeholder="設定使用者名稱" id="uname">
+                    <span>{{ errMsg }}</span>
+                </div>
+
+                <div class="info_input">
+                    <label for="upwd">密碼</label>
+                    <input type="password" name="upwd" placeholder="設定密碼" class="upwd">
+                </div>
+    
+                <div class="info_input">
+                    <label for="cpwd">再次輸入密碼確認</label>
+                    <input type="password" name="cpwd" placeholder="密碼確認" class="cpwd">
+                </div>
+    
+                <div class="info_input">
+                    <label for="ubd">生日</label>
+                    <input type="text" name="ubd" placeholder="yyyy-mm-dd" class="ubd">
+                    <input type="text" name="ubd" class="ubd" list>
+
+                    <div id="select_bd">
+    
+                        <select id="bd_year">
+                            <option value="-1" class="bd_y">年</option>
+                        </select>
+                        <select id="bd_month">
+                            <option value="-1" class="bd_m">月</option>
+                        </select>
+                        <select id="bd_day">
+                            <option value="-1" class="bd_d">日</option>
+                        </select>
+                        
+                    </div>
+                </div>
+    
+                <div class="info_input">
+                    <label for="uemail">信箱</label>
+                    <input type="email" name="uemail" placeholder="請輸入信箱" id="uemail">
+                </div> 
+    

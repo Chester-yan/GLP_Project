@@ -105,19 +105,29 @@ body{
 .regi_div{
     width: 100%;
     height: 70px;
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.regi_div p{
+.regi_div label{
     padding: 3px;
     color: rgb(255, 255, 255);
     font-size: 15px;
     text-align: center;
 }
 
-.info_input {
+.regi_div div {
+    width: 100%;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;   
+}
+
+input#info_input{
     width: 100%;
     height: 30px;
     padding: 5px 10px;
@@ -136,7 +146,7 @@ input:focus{
 
 
 /* 生日選單樣式 */
-#select_bd{
+div.input_div {
     width: 100%;
     display: inline-flex;
     flex-direction: row;
@@ -144,7 +154,7 @@ input:focus{
     justify-content: space-between;
 }
 
-.info_input select{
+.input_div select{
     width: 100px;
     height: 30px;
     border-color: rgb(255, 255, 255);
@@ -162,6 +172,7 @@ select:focus{
 
 /* 法律聲明樣式 */
 .Legal_Notices{
+    width: 100%;
     height: 40px;
     background: #72B01D;
     line-height: 30px;
