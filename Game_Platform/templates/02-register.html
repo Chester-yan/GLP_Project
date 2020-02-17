@@ -17,7 +17,6 @@
 </head>
 <body>
     
-    {% block all_page %}
     <div class="register_page">
         
         <div class="top_logo">
@@ -28,6 +27,8 @@
             <a href="/03-login">登入</a>
             <a href="/02-register">註冊</a>
         </div>
+
+        {% block all_page %}
         
         <div class="regi_form">
             <form action="{% url 'reg' %}" method="POST">{% csrf_token %}
@@ -58,11 +59,14 @@
 
         </div>
 
+        {% endblock all_page %}
+
         <div class="or_label">
             <div></div>
             <p>或</p>
             <div></div>
         </div>
+
         
         <div class="facebook_link">
             <!-- <p>使用facebook登入</p> -->
@@ -78,7 +82,6 @@
         </div>
             
     </div>
-    {% endblock all_page %}
 
     
     <!-- 
