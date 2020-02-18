@@ -7,13 +7,13 @@ from .models import *
 
 import datetime
 
-def validator_uname(value):
-    try:
-        User.objects.get(uname=value)
+# def validator_uname(value):
+#     try:
+#         User.objects.get(uname=value)
 
-        raise ValidationError('%s用戶名稱已註冊' % value)
-    except User.DoesNotExist:
-        print('此用戶名稱可使用')
+#         raise ValidationError('%s用戶名稱已註冊' % value)
+#     except User.DoesNotExist:
+#         print('此用戶名稱可使用')
 
 def validator_uemail(value):
     try:
@@ -34,7 +34,7 @@ class RegisterForm(forms.ModelForm):
             'min_length':'用戶名至少5字數',
             'max_length':'用戶名最多30字數'
             },
-        validators = [validator_uname],
+        # validators = [validator_uname],
         
         widget = forms.TextInput(
             attrs = {'id':'info_input','placeholder':'設定使用者名稱'}

@@ -18,10 +18,10 @@
         <div id="nav">
         
             <ul class="rightnav">
-                <li>
-                    <a href="javascript:show();">註冊/登入</a>
+                <li id="login">
+                    <a href='javascript:show();'>註冊/登入</a>
                 </li>
-                <li>
+                <li id="track">
                     <a href="#">追蹤</a>
                 </li>
             </ul>
@@ -73,13 +73,21 @@
 
         <div id="register_block" onclick="cancle(this);">
             
-            <iframe id="show_register" frameborder='0' src="{% url 'register' %}" ></iframe>
+            <iframe id="show_register" frameborder='0' src="{% url 'reg' %}" ></iframe>
     
         </div>  
 
     </div>
 
 </body>
-<script src="{% static 'js/01-index.js' %}"></script>
+
+
+{% block script %}
+    
+    <script src="{% static 'js/01-index.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+{% endblock script %}
+
 
 </html>

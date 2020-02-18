@@ -139,7 +139,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static/"),
 ]
 
+# 設置 sessionID 在 cookies 中的保存時間
 SESSION_COOKIE_AGE = 60*60*24
+# 關閉瀏覽器就清除SESSION
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # 取得HTTPS認可設定

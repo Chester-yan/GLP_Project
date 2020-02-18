@@ -31,7 +31,7 @@
         {% block all_page %}
         
         <div class="regi_form">
-            <form action="{% url 'reg' %}" method="POST">{% csrf_token %}
+            <form id="formReg" action="{% url 'reg' %}" method="POST">{% csrf_token %}
                 
                 {% for field in form %}
                 <div class="regi_div">
@@ -42,9 +42,10 @@
                     </div>
                     
                 </div>                    
-                {% if field.errors %}
-                    <span>{{ field.errors }}</span>
-                {% endif %}
+                <span id="err_tip">{{ errMsg }}</span>
+                <!-- {% if field.errors %} -->
+                    <!-- <span>{{ field.errors }}</span> -->
+                <!-- {% endif %} -->
                 {% endfor %}
                     
                 <div class="Legal_Notices">
@@ -92,14 +93,14 @@
     
 </body>
 
-{% block style %}
+{% block script %}
     
-{% endblock style %}
-    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="{% static 'js/02-register.js' %}"></script>
-<script async defer crossorigin="anonymous" 
-src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v6.0&appId=170092130952551
-&autoLogAppEvents=1"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{% static 'js/02-register.js' %}"></script>
+    <script async defer crossorigin="anonymous" 
+    src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v6.0&appId=170092130952551
+    &autoLogAppEvents=1"></script>
+
+{% endblock script %}
 
 </html>
