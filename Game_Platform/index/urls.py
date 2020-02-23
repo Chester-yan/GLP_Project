@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^check_uname/$',check_uname_view),
     url(r'^03-login/$', login_views, name='login'),
     url(r'^check_login/$', check_login_view),
+    url(r'^04-logout/$',logout_views),
 
 
 ]

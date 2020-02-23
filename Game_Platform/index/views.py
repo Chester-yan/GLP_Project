@@ -17,7 +17,7 @@ from .froms import *
 
 
 # Create your views here.
-
+@xframe_options_sameorigin
 def index_views(request):
     return render(request,'01-index.html')
 
@@ -32,16 +32,6 @@ def register_views(request):
     
     else:
         uname = request.POST['uname']
-
-        #先验证手机号在数据库中是否存在
-        # users = User.objects.filter(uname=uname)
-        # if users:
-
-        #     #uname 已经存在
-        #     errMsg = '用戶名稱已经存在'
-        #     return render(request,'02-register.html',locals())        
-
-
         form = RegisterForm(request.POST)
 
         if form.is_valid():
@@ -84,56 +74,80 @@ def login_views(request):
     # 判斷 get 請求還是 post 請求
     if request.method == 'GET':
         # get 請求 - 判斷session,判斷cookie,登入頁
+        url = request.META.get('HTTP_REFERER','/')
+
+
         # 判斷 session中是否有登入訊息
         if 'uid' in request.session and 'uname' in request.session:
             # 有登入訊息保存在 session
-            return HttpResponse('您已經登入成功了')
-            # return render(request,'01-index.html')
+
+            resp = HttpResponseRedirect(url)
+            return resp
+
+            # return HttpResponse('您已經登入成功了')
+
         else:
             # 沒有登入訊息保存在session，繼續判斷cookies中是否有登入訊息
-            if 'uid' in request.COOKIES and 'uname' in request.COOKIES:
-                # cookies中有登入訊息 - 曾經記住過密碼
 
+            # cookies中有登入訊息 - 曾經記住過密碼
+            if 'uid' in request.COOKIES and 'uname' in request.COOKIES:
+    
                 # 將cookies中的訊息取出來保存進session，再返回到首頁
                 uid = request.COOKIES['uid']
                 uname = request.COOKIES['uname']
                 request.session['uid'] = uid
                 request.session['uname'] = uname
-                # return HttpResponse('已登入成功')
+                
+                # 從哪來，回哪去
+                resp = redirect(url)
+                return resp        
 
-                # 已登入成功，返回首頁
-                return render(request,'01-index.html')
+                # return HttpResponse('已登入成功')
 
             else:
                 # cookies中沒有登入訊息 - 去往登入頁
                 form = LoginForm()
-                return render(request,'03-login.html',locals())
+
+                #将来访地址保存进cookies中
+                resp = render(request,'03-login.html',locals())
+                resp.set_cookie('url',url)
+                resp_setcookie = resp.set_cookie('url',url)
+                return resp                
 
     else:
         # post請求 - 實現登入操作
         # 獲取帳號與密碼
-        uid = request.POST['uid']
         uname = request.POST['uname']
+        upwd = request.POST['upwd']
         # 判斷帳號與密碼是否存在(登入是否成功)
-        users = User.objects.filter(uid=uid,uname=uname)
+        users = User.objects.filter(uname=uname,upwd=upwd)
 
         if users:
             # 登入成功 : 先存進session
             request.session['uid'] = users[0].id
             request.session['uname'] = uname
 
-            # 聲明回應對象 : 回應一句話'登入成功'
+            # 声明响应对象：从哪来回哪去
+            url = request.COOKIES.get('url','/')
+            resp = redirect(url)
+
+            # 将url从cookies中删除出去
+            if 'url' in request.COOKIES:
+                resp.delete_cookie('url')            
+
             # resp = HttpResponse('登入成功')
 
-            # 聲明回應對象 : 返回首頁
-            resp = render(request,'01-index.html')
             # 判斷是否要存進cookies
             if 'isSaved' in request.POST:
                 expire = 60*60*24*90
                 # cookie默認不能存中文，若要存中文，要轉碼
                 resp.set_cookie('uid',users[0].id,expire)
                 resp.set_cookie('uname',uname,expire)
-            return resp
+            
+            # return resp
+            return render(request,'03-login.html',locals())
+
+        
         else:
             # 登入失敗
             form = LoginForm()
@@ -143,8 +157,9 @@ def login_views(request):
 def check_login_view(request):
     # 檢查session中是否有登入訊息，若有即獲取對應數據的uname值
     # 若session無，再查cookies
-    if 'uid' in request.session and 'uphone' in request.session:
+    if 'uid' in request.session and 'uname' in request.session:
         loginStatus = 1
+
         #通過uid的值獲取對應的uname
         id = request.session['uid']
         uname=User.objects.get(id=id).uname
@@ -152,6 +167,7 @@ def check_login_view(request):
           'loginStatus':loginStatus,
           'uname':uname
         }
+        
         return HttpResponse(json.dumps(dic))
 
     else:
@@ -159,3 +175,22 @@ def check_login_view(request):
           'loginStatus':0
         }
         return HttpResponse(json.dumps(dic))
+
+#登出
+def logout_views(request):
+  #判断session中是否有登入訊息，有則清除
+  if 'uid' in request.session and 'uname' in request.session:
+    del request.session['uid']
+    del request.session['uname']
+
+    #建構響應對象：哪發的請求，就返回去
+    url=request.META.get('HTTP_REFERER','/')
+    resp = HttpResponseRedirect(url)
+    
+    #判斷cookies是否有登入訊息，有則刪除
+    if 'uid' in request.COOKIES and 'uname' in request.COOKIES:
+      resp.delete_cookie('uid')
+      resp.delete_cookie('uname')
+    return resp
+  
+  return redirect('/')

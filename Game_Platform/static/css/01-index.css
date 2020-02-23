@@ -87,6 +87,11 @@ a:hover{
     height: 100%;
     background-color: rgba(0,0,0,0.2);
     position: absolute;
+    /* display: none; */
+    /* display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
     order: 3;
     z-index: 799
 }
@@ -196,12 +201,13 @@ a:hover{
 
 
 /* 註冊功能樣式 */
-#register_block>iframe{
-    width:31%;
-    height:41%;
-    background: azure;
+#register_block iframe{
+    background: rgb(255, 255, 255);
     position: absolute;
-    left:39%;
-    top:20%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left:40%;
+    top:8%;
 }
-

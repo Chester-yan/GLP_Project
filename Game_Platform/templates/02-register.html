@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +13,12 @@
         {% endblock title %}
     </title>
 
-    <link href="{% static 'css/02-register.css' %}" rel="stylesheet">
-    
+
 </head>
-<body>
+
+<body onload="resize();">
     
-    <div class="register_page">
+    <div id="register_page" >
         
         <div class="top_logo">
             <p>Pilive</p>
@@ -31,7 +32,8 @@
         {% block all_page %}
         
         <div class="regi_form">
-            <form id="formReg" action="{% url 'reg' %}" method="POST">{% csrf_token %}
+            <form id="formReg" action="{% url 'reg' %}" method="POST">
+                {% csrf_token %}
                 
                 {% for field in form %}
                 <div class="regi_div">
@@ -84,7 +86,7 @@
             
     </div>
 
-    
+
     <!-- 
         <fb:login-button 
         scope="public_profile,email"
@@ -93,14 +95,21 @@
     
 </body>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="{% static 'css/02-register.css' %}" rel="stylesheet">
+
 {% block script %}
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="{% static 'js/02-register.js' %}"></script>
-    <script async defer crossorigin="anonymous" 
-    src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v6.0&appId=170092130952551
-    &autoLogAppEvents=1"></script>
+
+<script src="{% static 'js/02-register.js' %}"></script>
 
 {% endblock script %}
+<script>
+
+</script>
+
+<script async defer crossorigin="anonymous" 
+src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v6.0&appId=170092130952551
+&autoLogAppEvents=1"></script>
 
 </html>

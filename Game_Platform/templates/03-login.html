@@ -1,5 +1,5 @@
 {% extends '02-register.html' %}
-
+{% load static %}
 
 {% block title %}
     登入頁面
@@ -9,7 +9,7 @@
 {% block all_page %}
 
 <div class="regi_form">
-    <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+    <form id="formlog" action="{% url 'login' %}" method="POST">{% csrf_token %}
         
         {% for field in form %}
         <div class="regi_div">
@@ -33,5 +33,15 @@
 
 </div>
 
+
+
 {% endblock all_page %}
+    
+
+{% block script %}
+
+
+<script src="{% static 'js/03-login.js' %}"></script>
+    
+{% endblock script %}
     
