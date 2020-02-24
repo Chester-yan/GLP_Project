@@ -4,9 +4,11 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{% static 'images/favicon-20200224034212535.ico' %}">
     <title>
         {% block title %}
         註冊頁面
@@ -45,9 +47,6 @@
                     
                 </div>                    
                 <span id="{{ field.name }}_err">{{ errMsg }}</span>
-                <!-- {% if field.errors %} -->
-                    <!-- <span>{{ field.errors }}</span> -->
-                <!-- {% endif %} -->
                 {% endfor %}
                     
                 <div class="Legal_Notices">
@@ -104,9 +103,6 @@
 <script src="{% static 'js/02-register.js' %}"></script>
 
 {% endblock script %}
-<script>
-
-</script>
 
 <script async defer crossorigin="anonymous" 
 src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v6.0&appId=170092130952551

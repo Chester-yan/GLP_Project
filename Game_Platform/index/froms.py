@@ -15,12 +15,12 @@ import datetime
 #     except User.DoesNotExist:
 #         print('此用戶名稱可使用')
 
-def validator_uemail(value):
-    try:
-        User.objects.get(uemail=value)
-        raise ValidationError('此信箱已註冊過')
-    except User.DoesNotExist:
-        pass
+# def validator_uemail(value):
+#     try:
+#         User.objects.get(uemail=value)
+#         raise ValidationError('此信箱已註冊過')
+#     except User.DoesNotExist:
+#         pass
 
 class RegisterForm(forms.ModelForm):
     nowyear = datetime.datetime.now().year
@@ -34,7 +34,6 @@ class RegisterForm(forms.ModelForm):
             'min_length':'用戶名至少5字數',
             'max_length':'用戶名最多30字數'
             },
-        # validators = [validator_uname],
         
         widget = forms.TextInput(
             attrs = {'id':'info_input','placeholder':'設定使用者名稱'}
@@ -66,15 +65,15 @@ class RegisterForm(forms.ModelForm):
         widget = forms.EmailInput(
         attrs = {'id':'info_input','placeholder':'請輸入信箱'}
         ),
-        validators = [validator_uemail],
+        # validators = [validator_uemail],
         )     
 
-    def clean_cpwd(self):
-        upwd = self.cleaned_data.get('upwd')
-        cpwd = self.cleaned_data.get('cpwd')
-        if upwd and cpwd and upwd != cpwd:
-            raise forms.ValidationError('密碼不相符')
-        return cpwd
+    # def clean_cpwd(self):
+    #     upwd = self.cleaned_data.get('upwd')
+    #     cpwd = self.cleaned_data.get('cpwd')
+    #     if upwd and cpwd and upwd != cpwd:
+    #         raise forms.ValidationError('密碼不相符')
+    #     return cpwd
 
     # 通過內部類Meta表示關聯的訊息
     class Meta:

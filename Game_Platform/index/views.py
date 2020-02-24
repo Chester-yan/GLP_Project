@@ -47,7 +47,8 @@ def register_views(request):
             # 取出user中的uname和upwd的值，保存進session
             request.session['uid'] = user.id
             request.session['uname'] = user.uname
-            return HttpResponse('註冊成功')
+            # return HttpResponse('註冊成功')
+            return render(request,'02-register.html',locals())
 
         else:
             return render(request,'02-register.html',locals())
@@ -83,16 +84,13 @@ def check_uemail_view(request):
         msg = '%s 信箱已註冊' % uemail
     else:
         status = 0
-        msg = '信箱名稱沒問題'
+        msg = ''
         
     dic = {
         'status' : status,
         'msg' : msg,
     }
     return HttpResponse(json.dumps(dic))
-
-
-
 
 
 @xframe_options_sameorigin
