@@ -3,7 +3,7 @@
 // iframe視窗尺寸    
 function resize() {
     var div_width = $('#register_page').outerWidth(true); 
-    console.log(div_height)
+    // console.log(div_height)
     var div_height = $('#register_page').outerHeight(true); 
     parent.document.getElementById("show_register").width = div_width;
     parent.document.getElementById("show_register").height = div_height;

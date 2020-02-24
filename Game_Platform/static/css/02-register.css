@@ -148,7 +148,7 @@ input:focus{
     outline: none;
 }
 
-#err_tip {
+span {
     width: 98%;
     font: 10px 'Microsoft Yahei','微軟黑體','bold';
     display: inline-flex;

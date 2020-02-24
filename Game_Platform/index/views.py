@@ -52,11 +52,14 @@ def register_views(request):
         else:
             return render(request,'02-register.html',locals())
 
+
 def check_uname_view(request):
     # 接收前端傳遞過來的數據 - uname 進行重複性驗證
     uname = request.GET['uname']
-    users = User.objects.filter(uname = uname)
-    if users:
+    uname_ckeck = User.objects.filter(uname = uname)
+    
+
+    if uname_ckeck:
         status = 1
         msg = '%s 用戶名稱已註冊' % uname
     else:
@@ -68,6 +71,29 @@ def check_uname_view(request):
         'msg' : msg,
     }
     return HttpResponse(json.dumps(dic))
+
+
+def check_uemail_view(request):
+    
+    uemail = request.GET['uemail']
+    uemail_check = User.objects.filter(uemail = uemail)
+
+    if uemail_check:
+        status = 1
+        msg = '%s 信箱已註冊' % uemail
+    else:
+        status = 0
+        msg = '信箱名稱沒問題'
+        
+    dic = {
+        'status' : status,
+        'msg' : msg,
+    }
+    return HttpResponse(json.dumps(dic))
+
+
+
+
 
 @xframe_options_sameorigin
 def login_views(request):

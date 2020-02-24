@@ -3,7 +3,8 @@
 // 帳號驗證
 $(function (){
     //表示帳號是否已被注册過的狀態值
-    window.registStatus = 1;
+    window.uname_check = 1;
+    window.uemail_check = 1;
 
     /*為uname控件綁定blur事件 */
     $("input[name='uname']").blur(function(){
@@ -15,13 +16,54 @@ $(function (){
             '/check_uname/',
             {'uname':$(this).val()},
             function(data){
-                $("#err_tip").html(data.msg);
-                //为registStatus赋值，以便在提交表單時使用
-                window.registStatus = data.status;
-                // console.log("registStatus:"+data.status);
-            },'json'
-        );
+                console.log('這是js收到的uname_data:',data)
+
+                $("#uname_err").html(data.msg);
+                //为uname_check赋值，以便在提交表單時使用
+                window.uname_check = data.status;
+                // console.log("uname_check:"+data.status);
+            },'json');
     });
+
+    /*為uemail控件綁定blur事件 */
+    $("input[name='uemail']").blur(function(){
+        // 如果輸入框沒有任何東西則返回
+        if ($(this).val().trim().length == 0)
+        return ;
+        // 如果輸入框有數據則發送ajax請求判斷數據是否存在
+        $.get(
+            '/check_uemail/',
+            {'uemail':$(this).val()},
+            function(data){
+                console.log('這是js收到的uemail_data:',data)
+                $("#uemail_err").html(data.msg);
+                //为uemail_check赋值，以便在提交表單時使用
+                window.uemail_check = data.status;
+                // console.log("uemail_check:"+data.status);
+            },'json');
+    });
+
+    /*為uemail控件綁定blur事件 */
+    $("input[name='uemail']").blur(function(){
+        // 如果輸入框沒有任何東西則返回
+        if ($(this).val().trim().length == 0)
+        return ;
+        // 如果輸入框有數據則發送ajax請求判斷數據是否存在
+        $.get(
+            '/check_uemail/',
+            {'uemail':$(this).val()},
+            function(data){
+                console.log('這是js收到的uemail_data:',data)
+                $("#uemail_err").html(data.msg);
+                //为uemail_check赋值，以便在提交表單時使用
+                window.uemail_check = data.status;
+                // console.log("uemail_check:"+data.status);
+            },'json');
+    });
+
+
+
+
     /* 2.為#formReg表單元素綁定submit事件 */
     $("#formReg").submit(function(){
         //判断registStatus的值，決定表單是否要被提交
@@ -69,13 +111,13 @@ window.fbAsyncInit = function() {
 
 
 
-// iframe視窗尺寸    
+// iframe視窗尺寸     
 function resize() {
     var div_width = $('#register_page').outerWidth(true); 
-    console.log('div_width:',div_width)
+    // console.log('div_width:',div_width)
 
     var div_height = $('#register_page').outerHeight(true); 
-    console.log('div_height:',div_height)
+    // console.log('div_height:',div_height)
 
     parent.document.getElementById("show_register").width = div_width;
     parent.document.getElementById("show_register").height = div_height;

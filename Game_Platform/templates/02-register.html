@@ -38,13 +38,13 @@
                 {% for field in form %}
                 <div class="regi_div">
 
-                    <label for="field.labels" >{{ field.label }}</label>
+                    <label for="{{ field.name }}" >{{ field.label }}</label>
                     <div class="input_div">
                         {{ field }}
                     </div>
                     
                 </div>                    
-                <span id="err_tip">{{ errMsg }}</span>
+                <span id="{{ field.name }}_err">{{ errMsg }}</span>
                 <!-- {% if field.errors %} -->
                     <!-- <span>{{ field.errors }}</span> -->
                 <!-- {% endif %} -->
