@@ -13,16 +13,16 @@ function show() {
 };  
 
 
-window.onload = function resize() {
-    var div_width = $.get('/02-register/','#register_page');
-    console.log(div_width);
+// window.onload = function resize() {
+//     var div_width = $.get('/02-register/','#register_page');
+//     console.log(div_width);
 
-    // var div_width = $('#register_page').outerWidth(true); 
-    // var div_height = $('#register_page').outerHeight(true); 
-    // parent.document.getElementById("show_register").width = div_width;
-    // parent.document.getElementById("show_register").height = div_height;
+//     // var div_width = $('#register_page').outerWidth(true); 
+//     // var div_height = $('#register_page').outerHeight(true); 
+//     // parent.document.getElementById("show_register").width = div_width;
+//     // parent.document.getElementById("show_register").height = div_height;
     
-};
+// };
 
 
 
@@ -34,7 +34,7 @@ function check_login(){
 		if(data.loginStatus == 0){
 			html += "<a onclick='show();'>註冊/登入</a>";
 		}else{ 
-            html += "<a href='/04-logout'>登出</a>";
+            html += "<a href='/logout'>登出</a>";
 		}
         $("#login").html(html);
 	},'json');

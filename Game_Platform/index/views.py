@@ -22,6 +22,10 @@ def index_views(request):
     return render(request,'01-index.html')
 
 
+def Upage_views(request):
+    return render(request,'04-Upage.html')
+
+
 @xframe_options_sameorigin
 def register_views(request):
     # 判斷get或post請求，得到用戶的請求意圖
