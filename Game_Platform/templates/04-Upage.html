@@ -14,9 +14,29 @@
 
     <div class="main">
         <ul class="context">
-            <li id="li1">影片輪播</li>
-            <li id="li2">推薦分類</li>
-            <li id="li3">推薦頻道</li>
+            <li>
+
+
+
+
+
+                {% for title,value in title.items %}
+                <tr >
+
+                    <td>{{ title }}</td>
+                    <td>{{ value }}</td>
+                    <br>
+                </tr>
+                {% endfor %}
+                    
+
+
+            </li>
+                
+
+
+
+
             <li id="footer">底部資訊</li>
         </ul>
     </div>

@@ -119,5 +119,26 @@ class LoginForm(forms.ModelForm):
         }        
 
 
+class UserCenter(forms.ModelForm):
+    
 
+    class Meta:
+        model = User
 
+        fields = ['uphoto','ugender','uintro']
+        # exclude = ['upwd']
+
+        labels = {
+            'uphoto':'頭像',
+            'ugender':'性別',
+            'uintro':'自我介紹'
+        }
+
+            # 指定小部件
+        widgets = {
+            'uphoto':forms.FileInput(),
+
+            'ugender':forms.Select(),
+            
+            'uintro':forms.Textarea()                        
+        }

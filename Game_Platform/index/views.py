@@ -23,7 +23,64 @@ def index_views(request):
 
 
 def Upage_views(request):
-    return render(request,'04-Upage.html')
+    if request.method == 'GET':
+        # 關聯表單
+        form = UserCenter()
+        # 從session中取出登入資訊
+        uid = request.session['uid']
+        uname = request.session['uname']
+
+        # 透過登入資訊調出使用者資訊
+        Ulist = User.objects.filter(id=uid).values()
+        
+        print('Uinfo_query:',Ulist)
+        Uinfo = Ulist[0]
+        pop_list = ['id','upwd','isActive']
+
+        list(map(Uinfo.pop, pop_list))
+
+        print('Uinfo刪除id、upwd之後:',Uinfo)
+        # Uinfo刪除id、upwd之後: {
+        # 'uname': 'boss', 
+        # 'ubd': datetime.date(2020, 1, 1), 
+        # 'uemail': 'boss@boss.com', 
+        # 'ugender': None, 
+        # 'uphoto': '', 
+        # 'uintro': '', 
+        # 'ucredit': None, 
+        # 'ufriend': None, 
+        # 'usubs': None}
+
+        title = {
+            '頭像':'uphoto',
+            '使用者名稱':'uname',
+            '信箱':'uemail',
+            '性別':'ugender',
+            '生日':'ubd',
+            '簡介':'uintro',
+            '信用卡號':'ucredit',
+            '朋友':'ufriend',
+            '訂閱名單':'usubs',
+        }
+
+        for key in Uinfo.keys():
+            print('key:',key)
+            print('value:',Uinfo[key])
+            title['%s' % list(title.keys())[list(title.values()).index(key)]] = Uinfo[key]
+            
+        print(title)
+        '''
+        需要項目：
+        title - 既有資料 - 編輯控制項
+        '''
+
+                
+
+
+        
+
+
+        return render(request,'04-Upage.html',locals())
 
 
 @xframe_options_sameorigin
