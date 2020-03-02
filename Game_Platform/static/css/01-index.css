@@ -75,7 +75,11 @@ a:hover{
     display: flex;
     justify-content:center;
     align-items: center;
-    /* order: 1; */
+}
+
+.logo a{
+    color: #72B01D;
+
 }
 
 #nav{
@@ -150,6 +154,11 @@ a:hover{
     flex-basis: 300px;
     flex-grow: 100;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+
     order: 2;
 }
 
@@ -209,7 +218,7 @@ a:hover{
 
 
 /* 底部資訊 */
-.context #footer{
+#footer{
     height: 50px;
     background: rgb(218, 255, 167);
     text-align: center;

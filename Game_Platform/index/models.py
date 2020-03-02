@@ -1,4 +1,6 @@
 from django.db import models
+from creditcards.models import *
+
 
 # Create your models here.
 
@@ -9,8 +11,7 @@ class User(models.Model):
     uemail = models.EmailField(null=False, verbose_name='信箱')
 
     # 以下註冊後使用者自行輸入
-    GENDER_CHOICES = (('M','男'),('W','女'),)
-    ugender = models.CharField(max_length=2, choices = GENDER_CHOICES, null = True, verbose_name='性別')
+    ugender = models.CharField(max_length=2,  null = True, verbose_name='性別')
     uphoto = models.ImageField(upload_to = 'static/upload',null = True, blank = True, verbose_name='大頭照')
     uintro = models.TextField(max_length=300,blank = True,  verbose_name='自我介紹')
     
@@ -38,10 +39,10 @@ class User(models.Model):
 
 
 class Creditcard(models.Model):
-    c_num = models.CharField(max_length=16, verbose_name='卡號')
-    c_date = models.CharField(max_length=2, verbose_name='有效日期')
-    c_year = models.CharField(max_length=2, verbose_name='有效年限')
-    c_authcode = models.CharField(max_length=3, verbose_name='授權碼')
+    c_num = models.CharField(max_length=16, verbose_name='卡號', null = True, blank = True,)
+    c_date = models.CharField(max_length=2, verbose_name='有效日期', null = True, blank = True,)
+    c_year = models.CharField(max_length=2, verbose_name='有效年限', null = True, blank = True,)
+    c_authcode = models.CharField(max_length=3, verbose_name='授權碼', null = True, blank = True,)
     user = models.OneToOneField('User',null=True,on_delete=models.CASCADE, verbose_name='授權會員')
 
     def __str__(self):

@@ -1,0 +1,81 @@
+.uinfo_block{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.info_div {
+    width: auto;
+    height: 50px;
+    padding: 10px;
+    color: rgb(59, 59, 59);
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+.info_div div{
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.title_div{
+    width:120px;
+    background: #72B01D;
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(255, 238, 0);
+    border-radius: 12px;
+}
+
+.value_div{
+    width: 200px;
+    background: rgb(216, 216, 216);
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 12px;
+}
+
+.ugender_edit{
+    width: 100px;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 12px;
+    
+}
+
+select {
+    width: 100px;
+    height: 100%;
+    background: rgb(216, 216, 216);
+    text-align-last: center;
+    font-size: 20px;
+
+}
+
+
+.uintro_edit {
+    width: 200px;
+    border: 3px solid rgb(255, 255, 255);
+
+
+}
+
+
+textarea{
+    max-height: 32px;
+    background: rgb(216, 216, 216);
+    border-color: rgb(166, 166, 166);
+    border-radius: 5px;
+    padding: 5px;
+    resize: none;
+
+}
+
+.ucredit_edit label{
+    font-size: 10px;
+}
+
+.ucredit_edit input{
+    width: 80px;
+}

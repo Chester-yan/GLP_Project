@@ -21,11 +21,12 @@ from .froms import *
 def index_views(request):
     return render(request,'01-index.html')
 
-
+@xframe_options_sameorigin
 def Upage_views(request):
     if request.method == 'GET':
         # 關聯表單
         form = UserCenter()
+        Pform = PaymentForm()
         # 從session中取出登入資訊
         uid = request.session['uid']
         uname = request.session['uname']
@@ -33,13 +34,12 @@ def Upage_views(request):
         # 透過登入資訊調出使用者資訊
         Ulist = User.objects.filter(id=uid).values()
         
-        print('Uinfo_query:',Ulist)
+        # 取出字典
         Uinfo = Ulist[0]
+        # 剔除不顯示資訊
         pop_list = ['id','upwd','isActive']
-
         list(map(Uinfo.pop, pop_list))
 
-        print('Uinfo刪除id、upwd之後:',Uinfo)
         # Uinfo刪除id、upwd之後: {
         # 'uname': 'boss', 
         # 'ubd': datetime.date(2020, 1, 1), 
@@ -51,24 +51,23 @@ def Upage_views(request):
         # 'ufriend': None, 
         # 'usubs': None}
 
+        # 建立title清單
         title = {
             '頭像':'uphoto',
             '使用者名稱':'uname',
             '信箱':'uemail',
             '性別':'ugender',
             '生日':'ubd',
-            '簡介':'uintro',
             '信用卡號':'ucredit',
-            '朋友':'ufriend',
-            '訂閱名單':'usubs',
+            '好友':'ufriend',
+            '訂閱':'usubs',
+            '簡介':'uintro',
         }
 
+        # 將Uinfo value 對應title value對換
         for key in Uinfo.keys():
-            print('key:',key)
-            print('value:',Uinfo[key])
             title['%s' % list(title.keys())[list(title.values()).index(key)]] = Uinfo[key]
             
-        print(title)
         '''
         需要項目：
         title - 既有資料 - 編輯控制項
@@ -81,7 +80,24 @@ def Upage_views(request):
 
 
         return render(request,'04-Upage.html',locals())
+    # else:
+    #     uname = request.POST['uname']
+    #     Pform = PaymentForm(request.POST)
 
+    #     if Pform.is_valid():
+            
+    #         # 把cpwd的值刪除，不讓帶進User()數據庫中
+
+    #         user = User(**form.cleaned_data)
+
+    #         # 數據庫配置成功並且實體類映射成表之後，該操作可以實現
+    #         user.save() 
+            
+    #         return HttpResponse('信用卡編輯成功')
+
+    #     else:
+    #         return HttpResponse('信用卡編輯失敗')
+            
 
 @xframe_options_sameorigin
 def register_views(request):

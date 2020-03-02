@@ -11,37 +11,80 @@
 {% block container %}
     
 <div id="container" >
-
+    
+    <ul class="sidebar">
+        <li>
+            <a>會員中心</a>
+        </li>
+        <li>
+            <a>影片庫</a>
+        </li>
+    </ul>
     <div class="main">
-        <ul class="context">
-            <li>
+        <div class="uinfo_block">
 
+            {% for title,value in title.items %}
+            <div class="info_div">
+                <div class="title_div">{{ title }}</div>
+                <div class="value_div">{{ value }}</div>
+                {% if title == '頭像' %}
+                    <div class="{{ form.uphoto.name }}_edit">
+                        {{ form.uphoto}}
+                    </div>
 
-
-
-
-                {% for title,value in title.items %}
-                <tr >
-
-                    <td>{{ title }}</td>
-                    <td>{{ value }}</td>
-                    <br>
-                </tr>
-                {% endfor %}
+                    {% elif title == '性別'%}
+                    <div class="{{ form.ugender.name }}_edit">
+                        {{ form.ugender }}
+                    </div>
+                    <div>編輯</div>
                     
+                    {% elif title == '信用卡號'%}
+                    <div class="{{ form.ucredit.name }}_edit">
+                        {{ Pform }}
+                    </div>
+                    <div>編輯</div>
+                    
+                    {% elif title == '好友'%}
+                    <div class="{{ form.ufriend.name }}_edit">
+                        {{ form.ufriend }}
+                    </div>                    
+                    <div>編輯</div>
+                    
+                    {% elif title == '訂閱'%}
+                    <div class="{{ form.usubs.name }}_edit">
+                        {{ form.usubs }}
+                    </div>
+                    <div>編輯</div>
+                    
+                    {% elif title == '簡介'%}
+                    <div class="{{ form.uintro.name }}_edit">
+                        {{ form.uintro }}
+                    </div>
+                    <div>編輯</div>
 
+                {% endif %}
+                
+                    
+            </div>
+            {% endfor %}
+            
 
-            </li>
                 
 
+            <!-- {% for field in form %}
+            <div class="edit_div">
+                <label for="edit_label">{{ field.label }}</label>
+                <p>{{ field }}</p>
+            </div>
+            {% endfor %} -->
 
+        </div>
 
-
-            <li id="footer">底部資訊</li>
-        </ul>
+        <div id="footer">底部資訊</div>
     </div>
 
 </div>
 
+<link href="{% static 'css/04-Upage.css' %}" rel="stylesheet">
 {% endblock container %}
     

@@ -1,7 +1,12 @@
 from django import forms
 from django.forms import MultiWidget
+from django.forms import widgets
+from django.forms import ModelChoiceField
+
 from django.core.exceptions import ValidationError 
 from django.contrib.postgres import validators
+from creditcards.forms import CardNumberField, CardExpiryField, SecurityCodeField
+
 
 from .models import *
 
@@ -120,25 +125,78 @@ class LoginForm(forms.ModelForm):
 
 
 class UserCenter(forms.ModelForm):
-    
+    uintro = forms.CharField(
+        label = '簡介',
+        widget = forms.Textarea(
+            attrs={
+                'placeholder':'Describe what you love',
+                'class':'uintro_textarea',
+            }
+        )
+    )
+
+    GENDER_CHOICES = (('男','男'),('女','女'),)
+
+
+    ugender = forms.CharField(
+        label = '性別',
+        widget = forms.Select(
+            choices=GENDER_CHOICES,
+            attrs={
+                'class':'ugender_input',
+            }
+        )
+    )
+
+
 
     class Meta:
         model = User
 
-        fields = ['uphoto','ugender','uintro']
-        # exclude = ['upwd']
-
+        fields = ['uphoto','ugender','ucredit','ufriend','usubs']
+# ,'uintro','c_num','c_date','c_year','c_authcode',
         labels = {
             'uphoto':'頭像',
             'ugender':'性別',
-            'uintro':'自我介紹'
+            'uintro':'簡介',
+            'ucredit':'信用卡號',
+            # 'c_num':'卡號',
+            # 'c_date':'有效日期',
+            # 'c_year':'有效年限',
+            # 'c_authcode':'授權碼',
+            'ufriend':'好友',
+            'usubs':'訂閱'
         }
 
             # 指定小部件
-        widgets = {
-            'uphoto':forms.FileInput(),
+        widget = {
+            'uphoto':forms.FileInput(
+                attrs={
+                    'class':'uphoto_input',
+                }
+            ),
+                      
 
-            'ugender':forms.Select(),
-            
-            'uintro':forms.Textarea()                        
+            'c_num':forms.TextInput(), 
+            'c_date':forms.TextInput(), 
+            'c_year':forms.TextInput(), 
+            'c_authcode':forms.TextInput(), 
+            'ufriend':forms.TextInput(),                        
+            'usubs':forms.TextInput(),  
+
         }
+
+
+class PaymentForm(forms.Form):
+                # 'c_num':'卡號',
+            # 'c_date':'有效日期',
+            # 'c_year':'有效年限',
+            # 'c_authcode':'授權碼',
+    cc_number = CardNumberField(
+        attr = {
+            'placeholder':'卡號',
+
+        }
+    )
+    cc_expiry = CardExpiryField()
+    cc_code = SecurityCodeField()
