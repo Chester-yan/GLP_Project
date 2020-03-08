@@ -22,7 +22,7 @@
 
 }
 
-.title_div{
+.title_div {
     width:120px;
     background: #72B01D;
     color: rgb(255, 255, 255);
@@ -30,36 +30,48 @@
     border-radius: 12px;
 }
 
-.value_div{
+.value_div,#ugender_value_div,#ucredit_value_div,#ufriend_value_div,#usubs_value_div,#uintro_value_div {
     width: 200px;
     background: rgb(216, 216, 216);
-    border: 3px solid rgb(255, 255, 255);
+    margin: 3px 3px 3px 20px;
+    border-radius: 6px;
+}
+
+.ugender_title_div {
+    width:120px;
+    background: #72B01D;
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(255, 238, 0);
     border-radius: 12px;
 }
 
-.ugender_edit{
-    width: 100px;
-    border: 3px solid rgb(255, 255, 255);
-    border-radius: 12px;
-    
-}
 
-select {
+
+
+#id_ugender {
     width: 100px;
-    height: 100%;
     background: rgb(216, 216, 216);
+    margin: 3px 3px 3px 20px;
+
+    border-radius: 12px;
     text-align-last: center;
     font-size: 20px;
+    display: none;
+
 
 }
 
 
-.uintro_edit {
+#edit_button{
+    cursor: pointer;
+}
+
+
+/* #uintro_edit {
     width: 200px;
     border: 3px solid rgb(255, 255, 255);
 
-
-}
+} */
 
 
 textarea{
@@ -72,10 +84,50 @@ textarea{
 
 }
 
-.ucredit_edit label{
-    font-size: 10px;
+.ucredit_title_div {
+    width:120px;
+    background: #72B01D;
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(255, 238, 0);
+    border-radius: 12px;
 }
 
-.ucredit_edit input{
+
+#ucredit_edit,#ufriend_edit,#usubs_edit,#uintro_edit{
+    display: none;
+}
+
+#ucredit_edit input{
     width: 80px;
+    height: 32px;
+    margin-right: 10px;
+    background: rgb(216, 216, 216);
+    border-radius: 5px;
+    border: 1px solid rgb(166, 166, 166);
+    padding: 5px;
+    text-align-last: center;
+
+}
+
+
+
+#ufriend_edit input{
+    height: 32px;
+    background: rgb(216, 216, 216);
+    border-radius: 5px;
+    border: 1px solid rgb(166, 166, 166);
+    padding: 5px;
+    text-align-last: center;
+    
+}
+
+
+#usubs_edit input{
+    height: 32px;
+    background: rgb(216, 216, 216);
+    border-radius: 5px;
+    border: 1px solid rgb(166, 166, 166);
+    padding: 5px;
+    text-align-last: center;
+    
 }

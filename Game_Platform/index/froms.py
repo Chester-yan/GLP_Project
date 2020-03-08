@@ -148,22 +148,36 @@ class UserCenter(forms.ModelForm):
         )
     )
 
+    ufriend = forms.CharField(
+
+        widget = forms.TextInput(
+            attrs = {
+                'placeholder':'加入好友',
+            }        
+        ),
+    )
+
+    usubs = forms.CharField(
+
+        widget = forms.TextInput(
+            attrs = {
+                'placeholder':'加入訂閱',
+            }        
+        ),
+    )
+
 
 
     class Meta:
         model = User
 
         fields = ['uphoto','ugender','ucredit','ufriend','usubs']
-# ,'uintro','c_num','c_date','c_year','c_authcode',
+        
         labels = {
             'uphoto':'頭像',
             'ugender':'性別',
             'uintro':'簡介',
             'ucredit':'信用卡號',
-            # 'c_num':'卡號',
-            # 'c_date':'有效日期',
-            # 'c_year':'有效年限',
-            # 'c_authcode':'授權碼',
             'ufriend':'好友',
             'usubs':'訂閱'
         }
@@ -172,31 +186,55 @@ class UserCenter(forms.ModelForm):
         widget = {
             'uphoto':forms.FileInput(
                 attrs={
-                    'class':'uphoto_input',
+                    'id':'uphoto_input',
                 }
-            ),
+            )
+            }
                       
 
-            'c_num':forms.TextInput(), 
-            'c_date':forms.TextInput(), 
-            'c_year':forms.TextInput(), 
-            'c_authcode':forms.TextInput(), 
-            'ufriend':forms.TextInput(),                        
-            'usubs':forms.TextInput(),  
-
-        }
 
 
-class PaymentForm(forms.Form):
-                # 'c_num':'卡號',
-            # 'c_date':'有效日期',
-            # 'c_year':'有效年限',
-            # 'c_authcode':'授權碼',
+class PaymentForm(forms.ModelForm):
     cc_number = CardNumberField(
-        attr = {
-            'placeholder':'卡號',
-
-        }
+        # attr = {'class':'cc_input'}
     )
-    cc_expiry = CardExpiryField()
-    cc_code = SecurityCodeField()
+    cc_expiry = CardExpiryField(
+        # attr = {'class':'cc_input'}
+
+    )
+    cc_code = SecurityCodeField(
+        # attr = {'class':'cc_input'}
+
+    )
+
+    class Meta:
+
+        model = Ucreditcard
+
+        fields = ['cc_number','cc_expiry','cc_code']
+
+        labels = {
+            'cc_number':'卡號',
+            'cc_expiry':'有效期限',
+            'cc_code':'授權碼'
+        }
+
+        widgets = {
+            'cc_number':forms.TextInput(
+                attrs = {
+                    'id':'cc_input',
+                    'placeholder':'卡號'
+                }
+            ),
+            'cc_expiry':forms.TextInput(
+                attrs = {'id':'cc_input'}
+            ),
+            'cc_code':forms.TextInput(
+                attrs = {
+                    'id':'cc_input',
+                    'placeholder':'授權碼'
+
+                    }
+            )                           
+        }
+

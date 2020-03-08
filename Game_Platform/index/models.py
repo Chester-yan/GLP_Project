@@ -1,5 +1,7 @@
 from django.db import models
-from creditcards.models import *
+from creditcards import *
+from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
+
 
 
 # Create your models here.
@@ -78,3 +80,14 @@ class FilmLibrary(models.Model):
         verbose_name = '影片庫'
         verbose_name_plural = verbose_name  
         ordering = ['fdate']
+
+
+class Ucreditcard(models.Model):
+    cc_number = CardNumberField(verbose_name='卡號')
+    cc_expiry = CardExpiryField(verbose_name='有效日期')
+    cc_code = SecurityCodeField(verbose_name='授權碼')
+
+    class Meta:
+        db_table = 'Ucreditcard'
+        verbose_name = '信用卡庫'
+        verbose_name_plural = verbose_name  

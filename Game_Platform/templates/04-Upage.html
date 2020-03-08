@@ -23,44 +23,75 @@
     <div class="main">
         <div class="uinfo_block">
 
-            {% for title,value in title.items %}
+            {% for key,value in title.items %}
             <div class="info_div">
-                <div class="title_div">{{ title }}</div>
+                
+                {% if key == '性別' %}
+                <div class="title_div">{{ key }}</div>
+                <div id="ugender_value_div">{{ value }}</div>
+                    {% elif  key == '信用卡號' %}
+                    <div class="title_div">{{ key }}</div>
+                    <div id="ucredit_value_div">{{ value }}</div>
+
+                    {% elif  key == '好友' %}
+                    <div class="title_div">{{ key }}</div>
+                    <div id="ufriend_value_div">{{ value }}</div>
+
+                    {% elif  key == '訂閱' %}
+                    <div class="title_div">{{ key }}</div>
+                    <div id="usubs_value_div">{{ value }}</div>
+
+                    {% elif  key == '簡介' %}
+                    <div class="title_div">{{ key }}</div>
+                    <div id="uintro_value_div">{{ value }}</div>
+
+
+                {% else %}
+                <div class="title_div">{{ key }}</div>
                 <div class="value_div">{{ value }}</div>
-                {% if title == '頭像' %}
-                    <div class="{{ form.uphoto.name }}_edit">
+
+                {% endif %}
+                
+
+
+
+                {% if key == '頭像' %}
+                    <div id="{{ form.uphoto.name }}_edit">
                         {{ form.uphoto}}
                     </div>
 
-                    {% elif title == '性別'%}
-                    <div class="{{ form.ugender.name }}_edit">
-                        {{ form.ugender }}
-                    </div>
-                    <div>編輯</div>
+                    {% elif key == '性別'%}
+                    {{ form.ugender }}
+                    <div onclick='edit();' id='edit_button'>編輯</div>
                     
-                    {% elif title == '信用卡號'%}
-                    <div class="{{ form.ucredit.name }}_edit">
-                        {{ Pform }}
+                    {% elif key == '信用卡號'%}
+                    <div id="{{ form.ucredit.name }}_edit">
+                        
+                        {% for pform in Pform %}
+                            {{ pform }}
+                        {% endfor %}
+                            
                     </div>
-                    <div>編輯</div>
+                    <div onclick='edit();' id='edit_button'>編輯</div>
+
                     
-                    {% elif title == '好友'%}
-                    <div class="{{ form.ufriend.name }}_edit">
+                    {% elif key == '好友'%}
+                    <div id="{{ form.ufriend.name }}_edit">
                         {{ form.ufriend }}
                     </div>                    
-                    <div>編輯</div>
+                    <div onclick='edit();' id='edit_button'>編輯</div>
                     
-                    {% elif title == '訂閱'%}
-                    <div class="{{ form.usubs.name }}_edit">
+                    {% elif key == '訂閱'%}
+                    <div id="{{ form.usubs.name }}_edit">
                         {{ form.usubs }}
                     </div>
-                    <div>編輯</div>
+                    <div onclick='edit();' id='edit_button'>編輯</div>
                     
-                    {% elif title == '簡介'%}
-                    <div class="{{ form.uintro.name }}_edit">
+                    {% elif key == '簡介'%}
+                    <div id="{{ form.uintro.name }}_edit">
                         {{ form.uintro }}
                     </div>
-                    <div>編輯</div>
+                    <div onclick='edit();' id='edit_button'>編輯</div>
 
                 {% endif %}
                 
@@ -86,5 +117,12 @@
 </div>
 
 <link href="{% static 'css/04-Upage.css' %}" rel="stylesheet">
+
 {% endblock container %}
+
+
+{% block script %}
+
+<script src="{% static 'js/04-Upage.js' %}"></script>
+{% endblock script %}
     

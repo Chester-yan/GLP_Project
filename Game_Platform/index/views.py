@@ -27,6 +27,9 @@ def Upage_views(request):
         # 關聯表單
         form = UserCenter()
         Pform = PaymentForm()
+
+        print(form)
+        
         # 從session中取出登入資訊
         uid = request.session['uid']
         uname = request.session['uname']
@@ -56,8 +59,8 @@ def Upage_views(request):
             '頭像':'uphoto',
             '使用者名稱':'uname',
             '信箱':'uemail',
-            '性別':'ugender',
             '生日':'ubd',
+            '性別':'ugender',
             '信用卡號':'ucredit',
             '好友':'ufriend',
             '訂閱':'usubs',
@@ -68,10 +71,22 @@ def Upage_views(request):
         for key in Uinfo.keys():
             title['%s' % list(title.keys())[list(title.values()).index(key)]] = Uinfo[key]
             
+        # print(title)
+        # {'頭像': '', 
+        # '使用者名稱': 'boss', 
+        # '信箱': 'boss@boss.com', 
+        # '性別': 'M', 
+        # '生日': datetime.date(2020, 2, 1), 
+        # '信用卡號': None, 
+        # '好友': None, 
+        # '訂閱': None, '簡介': ''}
         '''
         需要項目：
         title - 既有資料 - 編輯控制項
         '''
+        def user_form(request):
+            form = UserCenter()
+            return render(request, '04-Upage.html', {'form':json.dumps(form)})
 
                 
 
