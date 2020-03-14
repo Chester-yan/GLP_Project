@@ -126,6 +126,7 @@ class LoginForm(forms.ModelForm):
 
 class UserCenter(forms.ModelForm):
     uintro = forms.CharField(
+        required = False,
         label = '簡介',
         widget = forms.Textarea(
             attrs={
@@ -150,7 +151,9 @@ class UserCenter(forms.ModelForm):
 
     ufriend = forms.CharField(
 
+        required = False,
         widget = forms.TextInput(
+
             attrs = {
                 'placeholder':'加入好友',
             }        
@@ -158,7 +161,7 @@ class UserCenter(forms.ModelForm):
     )
 
     usubs = forms.CharField(
-
+        required = False,
         widget = forms.TextInput(
             attrs = {
                 'placeholder':'加入訂閱',
@@ -222,16 +225,13 @@ class PaymentForm(forms.ModelForm):
         widgets = {
             'cc_number':forms.TextInput(
                 attrs = {
-                    'id':'cc_input',
                     'placeholder':'卡號'
                 }
             ),
             'cc_expiry':forms.TextInput(
-                attrs = {'id':'cc_input'}
             ),
             'cc_code':forms.TextInput(
                 attrs = {
-                    'id':'cc_input',
                     'placeholder':'授權碼'
 
                     }

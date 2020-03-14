@@ -15,7 +15,6 @@ class UserAdmin(admin.ModelAdmin):
 
         ('詳細資料', {
             "fields": ('uphoto', 'ugender', 'ufriend', 'usubs', 'uintro'),
-            "classes" : ('collapse',),
         }),
 
         ('管制資料', {
@@ -25,7 +24,7 @@ class UserAdmin(admin.ModelAdmin):
     )
     
 
-class CreditcardAdmin(admin.ModelAdmin):
+class UcreditcardAdmin(admin.ModelAdmin):
     pass
 
 class FilmAdmin(admin.ModelAdmin):
@@ -35,5 +34,5 @@ class FilmAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(User,UserAdmin)
-admin.site.register(Creditcard,CreditcardAdmin)
+admin.site.register(Ucreditcard,UcreditcardAdmin)
 admin.site.register(FilmLibrary,FilmAdmin)

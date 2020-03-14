@@ -13,9 +13,9 @@ class User(models.Model):
     uemail = models.EmailField(null=False, verbose_name='信箱')
 
     # 以下註冊後使用者自行輸入
-    ugender = models.CharField(max_length=2,  null = True, verbose_name='性別')
-    uphoto = models.ImageField(upload_to = 'static/upload',null = True, blank = True, verbose_name='大頭照')
-    uintro = models.TextField(max_length=300,blank = True,  verbose_name='自我介紹')
+    ugender = models.CharField(max_length=2,  null = True, blank = True, verbose_name='性別')
+    uphoto = models.ImageField(upload_to = 'static/upload/',null = True, blank = True, verbose_name='大頭照')
+    uintro = models.TextField(max_length=300, null = True, blank = True, verbose_name='自我介紹')
     
 
     # 以下後台連動管理
@@ -40,20 +40,20 @@ class User(models.Model):
         ordering = ['uname']
 
 
-class Creditcard(models.Model):
-    c_num = models.CharField(max_length=16, verbose_name='卡號', null = True, blank = True,)
-    c_date = models.CharField(max_length=2, verbose_name='有效日期', null = True, blank = True,)
-    c_year = models.CharField(max_length=2, verbose_name='有效年限', null = True, blank = True,)
-    c_authcode = models.CharField(max_length=3, verbose_name='授權碼', null = True, blank = True,)
-    user = models.OneToOneField('User',null=True,on_delete=models.CASCADE, verbose_name='授權會員')
+# class Creditcard(models.Model):
+#     c_num = models.CharField(max_length=16, verbose_name='卡號', null = True, blank = True,)
+#     c_date = models.CharField(max_length=2, verbose_name='有效日期', null = True, blank = True,)
+#     c_year = models.CharField(max_length=2, verbose_name='有效年限', null = True, blank = True,)
+#     c_authcode = models.CharField(max_length=3, verbose_name='授權碼', null = True, blank = True,)
+#     user = models.OneToOneField('User',null=True,on_delete=models.CASCADE, verbose_name='授權會員')
 
-    def __str__(self):
-        return self.c_num
+#     def __str__(self):
+#         return self.c_num
 
-    class Meta:
-        db_table = 'Creditcard'
-        verbose_name = '信用卡'
-        verbose_name_plural = verbose_name    
+#     class Meta:
+#         db_table = 'Creditcard'
+#         verbose_name = '信用卡'
+#         verbose_name_plural = verbose_name    
     
 
 class FilmLibrary(models.Model):
@@ -83,9 +83,11 @@ class FilmLibrary(models.Model):
 
 
 class Ucreditcard(models.Model):
-    cc_number = CardNumberField(verbose_name='卡號')
-    cc_expiry = CardExpiryField(verbose_name='有效日期')
-    cc_code = SecurityCodeField(verbose_name='授權碼')
+    cc_number = CardNumberField(verbose_name='卡號', null = True, blank = True, )
+    cc_expiry = CardExpiryField(verbose_name='有效日期', null = True, blank = True,)
+    cc_code = SecurityCodeField(verbose_name='授權碼', null = True, blank = True,)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='授權會員', null = True, blank = True)
+
 
     class Meta:
         db_table = 'Ucreditcard'

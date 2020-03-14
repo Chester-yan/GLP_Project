@@ -21,14 +21,27 @@
         </li>
     </ul>
     <div class="main">
-        <div class="uinfo_block">
+        <form class="uinfo_block" action="{% url 'upage' %}" method="POST">
 
+            {% csrf_token %}
+            
             {% for key,value in title.items %}
             <div class="info_div">
                 
                 {% if key == '性別' %}
                 <div class="title_div">{{ key }}</div>
                 <div id="ugender_value_div">{{ value }}</div>
+
+                    {% elif  key == '頭像' %}
+                    <div class="title_div">{{ key }}</div>
+                    <div id="uphoto_value_div">
+                        <img src="{{ value }}">
+                    </div>
+
+                    {% elif  key == '生日' %}
+                    <div class="title_div">{{ key }}</div>
+                    <div id="ubd_value_div">{{ value }}</div>
+
                     {% elif  key == '信用卡號' %}
                     <div class="title_div">{{ key }}</div>
                     <div id="ucredit_value_div">{{ value }}</div>
@@ -53,63 +66,54 @@
                 {% endif %}
                 
 
-
-
                 {% if key == '頭像' %}
-                    <div id="{{ form.uphoto.name }}_edit">
-                        {{ form.uphoto}}
+                    <div id="{{ UCform.uphoto.name }}_edit">
+                        {{ UCform.uphoto}}
                     </div>
 
+
                     {% elif key == '性別'%}
-                    {{ form.ugender }}
-                    <div onclick='edit();' id='edit_button'>編輯</div>
+                    {{ UCform.ugender }}
                     
                     {% elif key == '信用卡號'%}
-                    <div id="{{ form.ucredit.name }}_edit">
+                    <div id="{{ UCform.ucredit.name }}_edit">
                         
                         {% for pform in Pform %}
                             {{ pform }}
                         {% endfor %}
                             
                     </div>
-                    <div onclick='edit();' id='edit_button'>編輯</div>
 
                     
                     {% elif key == '好友'%}
-                    <div id="{{ form.ufriend.name }}_edit">
-                        {{ form.ufriend }}
+                    <div id="{{ UCform.ufriend.name }}_edit">
+                        {{ UCform.ufriend }}
                     </div>                    
-                    <div onclick='edit();' id='edit_button'>編輯</div>
                     
                     {% elif key == '訂閱'%}
-                    <div id="{{ form.usubs.name }}_edit">
-                        {{ form.usubs }}
+                    <div id="{{ UCform.usubs.name }}_edit">
+                        {{ UCform.usubs }}
                     </div>
-                    <div onclick='edit();' id='edit_button'>編輯</div>
                     
                     {% elif key == '簡介'%}
-                    <div id="{{ form.uintro.name }}_edit">
-                        {{ form.uintro }}
+                    <div id="{{ UCform.uintro.name }}_edit">
+                        {{ UCform.uintro }}
                     </div>
-                    <div onclick='edit();' id='edit_button'>編輯</div>
 
                 {% endif %}
                 
                     
             </div>
             {% endfor %}
+            <div class="info_div">
+                <input id="edit_button" onclick="edit();" type="button" value="編輯"> 
+            </div>
             
 
                 
 
-            <!-- {% for field in form %}
-            <div class="edit_div">
-                <label for="edit_label">{{ field.label }}</label>
-                <p>{{ field }}</p>
-            </div>
-            {% endfor %} -->
 
-        </div>
+        </form>
 
         <div id="footer">底部資訊</div>
     </div>

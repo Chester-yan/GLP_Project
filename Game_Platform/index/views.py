@@ -25,11 +25,9 @@ def index_views(request):
 def Upage_views(request):
     if request.method == 'GET':
         # 關聯表單
-        form = UserCenter()
+        UCform = UserCenter()
         Pform = PaymentForm()
-
-        print(form)
-        
+        print('進入會員中心')
         # 從session中取出登入資訊
         uid = request.session['uid']
         uname = request.session['uname']
@@ -80,39 +78,93 @@ def Upage_views(request):
         # '信用卡號': None, 
         # '好友': None, 
         # '訂閱': None, '簡介': ''}
-        '''
-        需要項目：
-        title - 既有資料 - 編輯控制項
-        '''
-        def user_form(request):
-            form = UserCenter()
-            return render(request, '04-Upage.html', {'form':json.dumps(form)})
-
-                
-
 
         
-
-
+        print('會員中心結束')
         return render(request,'04-Upage.html',locals())
-    # else:
-    #     uname = request.POST['uname']
-    #     Pform = PaymentForm(request.POST)
 
-    #     if Pform.is_valid():
+    else:
+        print('編輯開始')
+        UCform = UserCenter(request.POST)
+        Pform = PaymentForm(request.POST)
+
+        uid = request.session['uid']
+
+        # # 透過登入資訊調出使用者資訊
+        Ulist = User.objects.filter(id=uid).values()
+        
+        # # 取出字典
+        Uinfo = Ulist[0]
+        # # 剔除不顯示資訊
+        pop_list = ['id','upwd','isActive']
+        list(map(Uinfo.pop, pop_list))
+
+
+        print('ucform_valid:',UCform.is_valid())
+        if UCform.is_valid():
+            user = User.objects.get(id=uid)
+
+            # user = User(**ucform)
+            # user = User(**UCform.cleaned_data)
+            print('準備開始上傳圖片')
+            # uphoto = request.FILES.POST['uphoto']
+            uphoto = request.POST['uphoto']
+            print('uphoto:',uphoto)
+            ugender = request.POST['ugender']
+            ufriend = request.POST['ufriend']
+            usubs = request.POST['usubs']
+            uintro = request.POST['uintro']
+            ubd = Uinfo['ubd']
             
-    #         # 把cpwd的值刪除，不讓帶進User()數據庫中
 
-    #         user = User(**form.cleaned_data)
+            user.uphoto = uphoto
+            user.ugender = ugender
+            user.ufriend = ufriend
+            user.usubs = usubs
+            user.uintro = uintro
+            user.ubd = ubd
 
-    #         # 數據庫配置成功並且實體類映射成表之後，該操作可以實現
-    #         user.save() 
+            if Pform.is_valid():
+
+                Ucc_number = Uinfo['ucredit']
+    
+                Pform = Pform.cleaned_data
+                # ucreditcard = Ucreditcard(**Pform.cleaned_data)
+
+
+                if Ucc_number is None:
+                    user.ucredit = Pform['cc_number']
+                    ucreditcard = Ucreditcard()
+                    ucreditcard.cc_number = Pform['cc_number']
+                    ucreditcard.cc_expiry = Pform['cc_expiry']
+                    ucreditcard.cc_code = Pform['cc_code']
+                    ucreditcard.user_id = uid
+                    ucreditcard.save()
+
+                else:
+                    Ucc_info = Ucreditcard.objects.get(user_id=uid)
+                    Ucc_info.cc_number = Pform['cc_number']
+                    Ucc_info.cc_expiry = Pform['cc_expiry']
+                    Ucc_info.cc_code = Pform['cc_code']
+                    Ucc_info.save()
+
+
+            user.save() 
             
-    #         return HttpResponse('信用卡編輯成功')
+            return render(request,'04-Upage.html',locals())
+            # return HttpResponse('修改成功')
 
-    #     else:
-    #         return HttpResponse('信用卡編輯失敗')
-            
+        #     # return render(request,'04-Upage.html',locals())
+            # return HttpResponse('信用卡創建成功')
+
+        else:
+            return HttpResponse('儲存失敗')
+            # return render(request,'04-Upage.html',locals())            
+
+
+        print('什麼都沒有直接返回會員中心')
+        return render(request,'04-Upage.html',locals())            
+
 
 @xframe_options_sameorigin
 def register_views(request):

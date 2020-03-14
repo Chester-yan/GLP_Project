@@ -6,7 +6,7 @@
 
 .info_div {
     width: auto;
-    height: 50px;
+    /* height: 50px; */
     padding: 10px;
     color: rgb(59, 59, 59);
     display: flex;
@@ -30,7 +30,7 @@
     border-radius: 12px;
 }
 
-.value_div,#ugender_value_div,#ucredit_value_div,#ufriend_value_div,#usubs_value_div,#uintro_value_div {
+.value_div,#uphoto_value_div,#ugender_value_div,#ubd_value_div,#ucredit_value_div,#ufriend_value_div,#usubs_value_div,#uintro_value_div {
     width: 200px;
     background: rgb(216, 216, 216);
     margin: 3px 3px 3px 20px;
@@ -45,7 +45,10 @@
     border-radius: 12px;
 }
 
-
+img{
+    width: 200px;
+    height: 200px;
+}
 
 
 #id_ugender {
@@ -63,15 +66,17 @@
 
 
 #edit_button{
+    width:120px;
+    background: #72B01D;
+    margin: 3px 3px 3px 20px;
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
-
-
-/* #uintro_edit {
-    width: 200px;
-    border: 3px solid rgb(255, 255, 255);
-
-} */
 
 
 textarea{
@@ -93,7 +98,7 @@ textarea{
 }
 
 
-#ucredit_edit,#ufriend_edit,#usubs_edit,#uintro_edit{
+#uphoto_edit,#ucredit_edit,#ufriend_edit,#usubs_edit,#uintro_edit{
     display: none;
 }
 
