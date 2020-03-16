@@ -14,7 +14,7 @@ class User(models.Model):
 
     # 以下註冊後使用者自行輸入
     ugender = models.CharField(max_length=2,  null = True, blank = True, verbose_name='性別')
-    uphoto = models.ImageField(upload_to = 'static/upload/',null = True, blank = True, verbose_name='大頭照')
+    uphoto = models.ImageField(upload_to = 'static/upload',null = True, blank = True, verbose_name='大頭照')
     uintro = models.TextField(max_length=300, null = True, blank = True, verbose_name='自我介紹')
     
 

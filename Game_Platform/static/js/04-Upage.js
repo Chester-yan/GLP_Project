@@ -19,7 +19,7 @@ function edit_completed() {
 
 
 
-// $('#edit_button').submit(function(){
+$('#edit_button').submit(function(){
     // var id_uphoto = $("#id_uphoto").val()
     // var ubd_value_div = $("#ubd_value_div").val()
     // var ugender_val = $("#id_ugender").val()
@@ -30,7 +30,7 @@ function edit_completed() {
     
     // console.log(id_uphoto,ugender_val,ubd_value_div,ucredit_edit,id_ufriend,id_usubs,id_uintro)
 
-// });
+});
 
 // $(function(){
 //     edit();

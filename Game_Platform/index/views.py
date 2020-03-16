@@ -86,7 +86,7 @@ def Upage_views(request):
     else:
         print('編輯開始')
         UCform = UserCenter(request.POST)
-        Pform = PaymentForm(request.POST)
+        Pform = PaymentForm(request.POST,request.FILES)
 
         uid = request.session['uid']
 
@@ -102,26 +102,27 @@ def Upage_views(request):
 
         print('ucform_valid:',UCform.is_valid())
         if UCform.is_valid():
-            user = User.objects.get(id=uid)
-
-            # user = User(**ucform)
-            # user = User(**UCform.cleaned_data)
-            print('準備開始上傳圖片')
-            # uphoto = request.FILES.POST['uphoto']
-            uphoto = request.POST['uphoto']
-            print('uphoto:',uphoto)
-            ugender = request.POST['ugender']
-            ufriend = request.POST['ufriend']
-            usubs = request.POST['usubs']
-            uintro = request.POST['uintro']
+            # user = User.objects.get(id=uid)
             ubd = Uinfo['ubd']
+
+            # # user = User(**ucform)
+            user = User(**UCform.cleaned_data)
+            # print('準備開始上傳圖片')
+            # uphoto = request.FILES['uphoto']
+            # uphoto = User(uphoto=request.POST.get('uphoto'),image=uphoto)
+            # uphoto = request.POST['uphoto']
+            # print('uphoto:',uphoto)
+            # ugender = request.POST['ugender']
+            # ufriend = request.POST['ufriend']
+            # usubs = request.POST['usubs']
+            # uintro = request.POST['uintro']
             
 
-            user.uphoto = uphoto
-            user.ugender = ugender
-            user.ufriend = ufriend
-            user.usubs = usubs
-            user.uintro = uintro
+            # user.uphoto = uphoto
+            # user.ugender = ugender
+            # user.ufriend = ufriend
+            # user.usubs = usubs
+            # user.uintro = uintro
             user.ubd = ubd
 
             if Pform.is_valid():

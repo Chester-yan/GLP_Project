@@ -21,7 +21,7 @@
         </li>
     </ul>
     <div class="main">
-        <form class="uinfo_block" action="{% url 'upage' %}" method="POST">
+        <form class="uinfo_block" action="{% url 'upage' %}" method="POST" enctype="multipart/form-data">
 
             {% csrf_token %}
             
