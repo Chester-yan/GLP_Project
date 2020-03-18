@@ -86,136 +86,123 @@ def Upage_views(request):
     else:
         print('編輯開始')
 
-        if request.method == "POST":
-            print('開始取值')
-            # user = User.objects.filter(id=uid).values()
+        # if request.method == "POST":
+        #     print('開始取值')
+        #     user = User.objects.filter(id=uid)
 
 
-            uid = request.session['uid']
-            # # 透過登入資訊調出使用者資訊
-            Ulist = User.objects.filter(id=uid).values()
-            # # 取出字典
-            Uinfo = Ulist[0]
-            # # 剔除不顯示資訊
-            pop_list = ['id','upwd','isActive']
-            list(map(Uinfo.pop, pop_list))
+        #     uid = request.session['uid']
+        #     # # 透過登入資訊調出使用者資訊
+        #     Ulist = User.objects.filter(id=uid).values()
+        #     # # 取出字典
+        #     Uinfo = Ulist[0]
+        #     # # 剔除不顯示資訊
+        #     pop_list = ['id','upwd','isActive']
+        #     list(map(Uinfo.pop, pop_list))
 
 
-            uphoto = request.FILES.get('uphoto')
-            print('uphoto:',uphoto)
-            ugender = request.POST.get('ugender')
-            ufriend = request.POST.get('ufriend')
-            usubs = request.POST.get('usubs')
-            uintro = request.POST.get('uintro')
-            ubd = Uinfo['ubd']
-
-            user = User(
-                uphoto=uphoto, 
-                ugender=ugender, 
-                ufriend=ufriend,
-                usubs=usubs,
-                uintro=uintro,
-                ubd=ubd
-                )
-            user.save()
-            print('儲存完成')
-            return HttpResponse('修改成功')
-
-
-
-
-
-        # print('編輯開始')
-        # UCform = UserCenter(request.POST,request.FILES)
-        # Pform = PaymentForm(request.POST)
-
-        # uid = request.session['uid']
-
-        # # # 透過登入資訊調出使用者資訊
-        # Ulist = User.objects.filter(id=uid).values()
-        
-        # # # 取出字典
-        # Uinfo = Ulist[0]
-        # # # 剔除不顯示資訊
-        # pop_list = ['id','upwd','isActive']
-        # list(map(Uinfo.pop, pop_list))
-
-        # # print('UCform.uphoto:',UCform.uphoto)
-
-
-        # print('ucform_valid:',UCform.is_valid())
-        # if UCform.is_valid():
-        #     user = User.objects.get(id=uid)
-        #     Ucform = UCform.cleaned_data
-        #     print('Ucform:',Ucform)
-        #     # uphoto = request.POST['uphoto']
-        #     uphoto = User(uphoto=request.FILES.get('uphoto'))
-        #     # uphoto = request.FILES.get('uphoto')
+        #     uphoto = request.FILES.get('uphoto')
         #     print('uphoto:',uphoto)
-        #     # Ucform['uphoto'] = uphoto
-        #     # print('Ucform:',Ucform)
-
-        #     # # user = User(**ucform)
-        #     # user = User(**UCform.cleaned_data)
-        #     print('準備開始上傳圖片')
-        #     # uphoto = request.FILES.get('uphoto')
-        #     # uphoto = User(uphoto=request.POST.get('uphoto'),image=uphoto)
-        #     # uphoto = Ucform['uphoto']
-        #     # print('uphoto:',uphoto)
-        #     ugender = request.POST['ugender']
-        #     ufriend = request.POST['ufriend']
-        #     usubs = request.POST['usubs']
-        #     uintro = request.POST['uintro']
-            
-
-        #     user.uphoto = uphoto
-        #     print('user.uphoto:',user.uphoto)
-        #     user.ugender = ugender
-        #     user.ufriend = ufriend
-        #     user.usubs = usubs
-        #     user.uintro = uintro
+        #     ugender = request.POST.get('ugender')
+        #     ufriend = request.POST.get('ufriend')
+        #     usubs = request.POST.get('usubs')
+        #     uintro = request.POST.get('uintro')
         #     ubd = Uinfo['ubd']
-        #     user.ubd = ubd
 
-        #     if Pform.is_valid():
-
-        #         Ucc_number = Uinfo['ucredit']
-    
-        #         Pform = Pform.cleaned_data
-        #         # ucreditcard = Ucreditcard(**Pform.cleaned_data)
-
-
-        #         if Ucc_number is None:
-
-        #             user.ucredit = Pform['cc_number']
-        #             ucreditcard = Ucreditcard()
-        #             ucreditcard.cc_number = Pform['cc_number']
-        #             ucreditcard.cc_expiry = Pform['cc_expiry']
-        #             ucreditcard.cc_code = Pform['cc_code']
-        #             ucreditcard.user_id = uid
-        #             ucreditcard.save()
-
-
-        #         # else:
-        #             # uid = request.session['uid']
-        #             # print('uid:',uid)
-        #             # Ucc_info = Ucreditcard.objects.get(user_id=uid)
-        #             # Ucc_info.cc_number = Pform['cc_number']
-        #             # Ucc_info.cc_expiry = Pform['cc_expiry']
-        #             # Ucc_info.cc_code = Pform['cc_code']
-        #             # Ucc_info.save()
-
-        #     user.save() 
-            
-        #     # return render(request,'04-Upage.html',locals())
+        #     user = User(
+        #         uphoto=uphoto, 
+        #         ugender=ugender, 
+        #         ufriend=ufriend,
+        #         usubs=usubs,
+        #         uintro=uintro,
+        #         ubd=ubd
+        #         )
+        #     user.save()
+        #     print('儲存完成')
         #     return HttpResponse('修改成功')
 
-        # #     # return render(request,'04-Upage.html',locals())
-        #     # return HttpResponse('信用卡創建成功')
 
-        # else:
-        #     return HttpResponse('儲存失敗')
-        #     # return render(request,'04-Upage.html',locals())            
+
+
+
+        print('編輯開始')
+        UCform = UserCenter(request.POST,request.FILES)
+        Pform = PaymentForm(request.POST)
+
+        uid = request.session['uid']
+
+        # # 透過登入資訊調出使用者資訊
+        Ulist = User.objects.filter(id=uid).values()
+        
+        # # 取出字典
+        Uinfo = Ulist[0]
+        # # 剔除不顯示資訊
+        pop_list = ['id','upwd','isActive']
+        list(map(Uinfo.pop, pop_list))
+
+        # print('UCform.uphoto:',UCform.uphoto)
+
+
+        print('ucform_valid:',UCform.is_valid())
+        if UCform.is_valid():
+            # # user = User(**ucform)
+            # user = User(**UCform.cleaned_data)
+            user = User.objects.get(id=uid)
+            # Ucform = UCform.cleaned_data
+            uphoto = request.POST['uphoto']
+            ugender = request.POST['ugender']
+            ufriend = request.POST['ufriend']
+            usubs = request.POST['usubs']
+            uintro = request.POST['uintro']
+            
+
+            user.uphoto = uphoto
+            user.ugender = ugender
+            user.ufriend = ufriend
+            user.usubs = usubs
+            user.uintro = uintro
+            ubd = Uinfo['ubd']
+            user.ubd = ubd
+
+            if Pform.is_valid():
+
+                Ucc_number = Uinfo['ucredit']
+    
+                Pform = Pform.cleaned_data
+                # ucreditcard = Ucreditcard(**Pform.cleaned_data)
+
+
+                if Ucc_number is None:
+
+                    user.ucredit = Pform['cc_number']
+                    ucreditcard = Ucreditcard()
+                    ucreditcard.cc_number = Pform['cc_number']
+                    ucreditcard.cc_expiry = Pform['cc_expiry']
+                    ucreditcard.cc_code = Pform['cc_code']
+                    ucreditcard.user_id = uid
+                    ucreditcard.save()
+
+
+                # else:
+                    # uid = request.session['uid']
+                    # print('uid:',uid)
+                    # Ucc_info = Ucreditcard.objects.get(user_id=uid)
+                    # Ucc_info.cc_number = Pform['cc_number']
+                    # Ucc_info.cc_expiry = Pform['cc_expiry']
+                    # Ucc_info.cc_code = Pform['cc_code']
+                    # Ucc_info.save()
+
+            user.save() 
+            
+            # return render(request,'04-Upage.html',locals())
+            return HttpResponse('修改成功')
+
+        #     # return render(request,'04-Upage.html',locals())
+            # return HttpResponse('信用卡創建成功')
+
+        else:
+            return HttpResponse('儲存失敗')
+            # return render(request,'04-Upage.html',locals())            
 
 
         print('什麼都沒有直接返回會員中心')
