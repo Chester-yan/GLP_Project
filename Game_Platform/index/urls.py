@@ -1,5 +1,7 @@
 from django.conf.urls import url
 from .views import *
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     url(r'^$',index_views),
@@ -11,6 +13,7 @@ urlpatterns = [
     url(r'^check_uemail/$',check_uemail_view),
     url(r'^check_uname/$',check_uname_view),
     url(r'^check_login/$', check_login_view),
+    url(r'^check_edit/$', check_edit_view),
 
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

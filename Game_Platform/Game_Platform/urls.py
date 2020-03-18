@@ -17,9 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+
     # 當訪問路徑不是admin時，一律交給index應用中的urls去處理
     url(r'^',include('index.urls'))
+
 ]
+
+

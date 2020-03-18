@@ -15,6 +15,7 @@ class UserAdmin(admin.ModelAdmin):
 
         ('詳細資料', {
             "fields": ('uphoto', 'ugender', 'ufriend', 'usubs', 'uintro'),
+            # "classes" : ('collapse',),
         }),
 
         ('管制資料', {

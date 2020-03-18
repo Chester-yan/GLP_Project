@@ -17,18 +17,34 @@ function edit_completed() {
 
 };
 
+function imageLoaded(obj, src) {
+
+    var img = new Image();
+    if(src === undefined){
+        src='';
+    }
+
+    img.onload = function() {
+        obj.src = src;
+    };
+
+    img.src = src;
+};
 
 
-$('#edit_button').submit(function(){
-    // var id_uphoto = $("#id_uphoto").val()
-    // var ubd_value_div = $("#ubd_value_div").val()
-    // var ugender_val = $("#id_ugender").val()
-    // var ucredit_edit = $("#ucredit_edit").val()
-    // var id_ufriend = $("#id_ufriend").val()
-    // var id_usubs = $("#id_usubs").val()
-    // var id_uintro = $("#id_uintro").val()
-    
-    // console.log(id_uphoto,ugender_val,ubd_value_div,ucredit_edit,id_ufriend,id_usubs,id_uintro)
+$('#edit_button').blur(function(){
+    console.log($('#id_uphoto').val())
+
+
+
+    //     $.get('/check_edit/',function(data){
+//         console.log(data)
+//     },'json');
+
+});
+
+$("[id=edit_button]").submit(function(){
+    console.log($('#id_uphoto'))
 
 });
 

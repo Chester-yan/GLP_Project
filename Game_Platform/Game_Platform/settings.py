@@ -127,11 +127,12 @@ USE_TZ = True
 
 # 靜態文件的訪問路徑
 STATIC_URL = '/static/' 
+MEDIA_URL = '/upload/' # 虚拟地址（URL方式访问的地址）
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static') # 文件存放目录
+
 
 # 靜態文件的存儲路徑
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static/"),
-]
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static/"), ]
 
 # 設置 sessionID 在 cookies 中的保存時間
 SESSION_COOKIE_AGE = 60*60*24

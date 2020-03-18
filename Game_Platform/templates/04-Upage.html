@@ -21,9 +21,20 @@
         </li>
     </ul>
     <div class="main">
-        <form class="uinfo_block" action="{% url 'upage' %}" method="POST" enctype="multipart/form-data">
+        <form id="uinfo_edit_form" class="uinfo_block" action="{% url 'upage' %}" method="POST" >
 
             {% csrf_token %}
+
+            <!-- <img src="/static/upload/f1a3e633-981b-48dd-9693-183da0c517cd-profile_image-50x50.jpeg" alt=""> -->
+            
+            {% for Ulist in Ulist %}
+                
+                {% if Ulist.uphoto %}
+                    <img src="/static/{{ Ulist.uphoto }}" >
+                    
+                {% endif %}
+                    
+            {% endfor %}
             
             {% for key,value in title.items %}
             <div class="info_div">
@@ -35,7 +46,7 @@
                     {% elif  key == '頭像' %}
                     <div class="title_div">{{ key }}</div>
                     <div id="uphoto_value_div">
-                        <img src="{{ value }}">
+                        <img src="/static/{{ value }}">
                     </div>
 
                     {% elif  key == '生日' %}

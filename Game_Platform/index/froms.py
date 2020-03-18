@@ -140,6 +140,7 @@ class UserCenter(forms.ModelForm):
 
 
     ugender = forms.CharField(
+        required = False,
         label = '性別',
         widget = forms.Select(
             choices=GENDER_CHOICES,
@@ -150,10 +151,8 @@ class UserCenter(forms.ModelForm):
     )
 
     ufriend = forms.CharField(
-
-        required = False,
+        # required = False,
         widget = forms.TextInput(
-
             attrs = {
                 'placeholder':'加入好友',
             }        
@@ -168,6 +167,15 @@ class UserCenter(forms.ModelForm):
             }        
         ),
     )
+
+    # uphoto = forms.ImageField(
+    #     label = '頭像',
+    #     widget = forms.FileInput(
+    #         attrs = {
+    #             'id':'uphoto_input',
+    #         },
+    #     ),
+    # )
 
 
 
@@ -186,27 +194,25 @@ class UserCenter(forms.ModelForm):
         }
 
             # 指定小部件
-        widget = {
-            'uphoto':forms.FileInput(
-                attrs={
-                    'id':'uphoto_input',
-                }
-            )
-            }
+        # widget = {
+        #     'uphoto':forms.FileInput(
+        #         attrs={
+        #             'id':'uphoto_input',
+        #         }
+        #     )
+        #     }        
                       
 
 
 
 class PaymentForm(forms.ModelForm):
     cc_number = CardNumberField(
-        # attr = {'class':'cc_input'}
+
     )
     cc_expiry = CardExpiryField(
-        # attr = {'class':'cc_input'}
 
     )
     cc_code = SecurityCodeField(
-        # attr = {'class':'cc_input'}
 
     )
 
@@ -224,13 +230,16 @@ class PaymentForm(forms.ModelForm):
 
         widgets = {
             'cc_number':forms.TextInput(
+
                 attrs = {
                     'placeholder':'卡號'
                 }
             ),
             'cc_expiry':forms.TextInput(
+
             ),
             'cc_code':forms.TextInput(
+
                 attrs = {
                     'placeholder':'授權碼'
 
