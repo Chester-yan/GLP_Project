@@ -17,21 +17,6 @@ function edit_completed() {
 
 };
 
-function imageLoaded(obj, src) {
-
-    var img = new Image();
-    if(src === undefined){
-        src='';
-    }
-
-    img.onload = function() {
-        obj.src = src;
-    };
-
-    img.src = src;
-};
-
-
 $('#edit_button').blur(function(){
     console.log($('#id_uphoto').val())
 

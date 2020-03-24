@@ -27,6 +27,6 @@ urlpatterns = [
     # 當訪問路徑不是admin時，一律交給index應用中的urls去處理
     url(r'^',include('index.urls'))
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

@@ -10,6 +10,9 @@ from django.utils.deprecation import MiddlewareMixin
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.contrib.auth import authenticate,login,logout
 
+# from django.core.files.storage import FileSystemStorage
+
+
 
 from .models import *
 from .froms import * 
@@ -126,7 +129,7 @@ def Upage_views(request):
 
 
         print('編輯開始')
-        UCform = UserCenter(request.POST,request.FILES)
+        UCform = UserCenter(request.POST)
         Pform = PaymentForm(request.POST)
 
         uid = request.session['uid']
@@ -149,13 +152,27 @@ def Upage_views(request):
             # user = User(**UCform.cleaned_data)
             user = User.objects.get(id=uid)
             # Ucform = UCform.cleaned_data
-            uphoto = request.POST['uphoto']
+            
+            # if request.method == 'POST' and request.FILES['uphoto']:
+    
+            #     uphoto = request.FILES['uphoto']
+            #     print('uphoto測試:',uphoto)
+            #     fs = FileSystemStorage()
+            #     # filename = fs.save(uphoto.name,uphoto)
+            #     # print('filename:',filename)
+            #     # uploaded_file_url = fs.url(filename)
+            #     # return uphoto
+
+
+
+            uphoto = request.FILES['uphoto']
+
             ugender = request.POST['ugender']
             ufriend = request.POST['ufriend']
             usubs = request.POST['usubs']
             uintro = request.POST['uintro']
             
-
+            print('傳送前的uphoto:',uphoto)
             user.uphoto = uphoto
             user.ugender = ugender
             user.ufriend = ufriend
