@@ -168,14 +168,15 @@ class UserCenter(forms.ModelForm):
         ),
     )
 
-    # uphoto = forms.ImageField(
-    #     label = '頭像',
-    #     widget = forms.FileInput(
-    #         attrs = {
-    #             'id':'uphoto_input',
-    #         },
-    #     ),
-    # )
+    uphoto = forms.ImageField(
+        required = False,
+        label = '頭像',
+        widget = forms.FileInput(
+            attrs = {
+                'id':'uphoto_input',
+            },
+        ),
+    )
 
 
 

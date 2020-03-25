@@ -6,7 +6,6 @@
 
 .info_div {
     width: auto;
-    /* height: 50px; */
     padding: 10px;
     color: rgb(59, 59, 59);
     display: flex;
@@ -68,10 +67,10 @@ img{
 #edit_button{
     width:120px;
     background: #72B01D;
-    margin: 3px 3px 3px 20px;
+    margin: 3px 3px 3px 23px;
     color: rgb(255, 255, 255);
     font-size: 15px;
-    border-radius: 12px;
+    border-radius: 6px;
     display: flex;
     justify-content: center;
     align-items: center;

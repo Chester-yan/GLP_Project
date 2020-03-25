@@ -15,12 +15,10 @@ class UserAdmin(admin.ModelAdmin):
 
         ('詳細資料', {
             "fields": ('uphoto', 'ugender', 'ufriend', 'usubs', 'uintro'),
-            # "classes" : ('collapse',),
         }),
 
         ('管制資料', {
             "fields": ('ucredit', 'isActive'),
-            "classes" : ('collapse',),
         })
     )
     
@@ -30,7 +28,6 @@ class UcreditcardAdmin(admin.ModelAdmin):
 
 class FilmAdmin(admin.ModelAdmin):
     date_hierarchy = 'fdate'
-    # pass
 
 
 # Register your models here.

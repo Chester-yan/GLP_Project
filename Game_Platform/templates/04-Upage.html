@@ -33,7 +33,7 @@
                 <div id="ugender_value_div">{{ value }}</div>
 
                     {% elif  key == '頭像' %}
-                    <div class="title_div">{{ key }}</div>
+                    <!-- <div class="title_div">{{ key }}</div> -->
                     <div id="uphoto_value_div">
                         <img src="/static/{{ value }}">
                     </div>
@@ -105,7 +105,7 @@
                     
             </div>
             {% endfor %}
-            <div class="info_div">
+            <div class="info_div" id='submit_div'>
                 <input id="edit_button" onclick="edit();" type="button" value="編輯"> 
             </div>
             
