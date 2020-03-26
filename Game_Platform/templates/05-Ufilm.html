@@ -1,0 +1,75 @@
+{% extends '01-index.html' %}
+{% load static %}
+
+{% block title %}
+    
+<title>影片庫</title>
+
+{% endblock title %}
+    
+
+{% block container %}
+    
+<div id="container" >
+    
+    <ul class="sidebar">
+        <li>
+            <a href="/04-Upage">會員中心</a>
+        </li>
+        <li>
+            <div class="Ufilm_div">影片庫</div>
+        </li>
+    </ul>
+    <div class="film_page_main">
+        <form id="uinfo_edit_form" class="uinfo_block" action="{% url 'ufilm' %}" method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            
+            {% for filmup in filmup %}
+            <div class="title_div">
+                {{ filmup.label }}
+            </div>
+            <div class="video_upload_div">
+                {{ filmup }}
+            </div>
+            {% endfor %}
+                
+            <!-- {{ Ufilm.as_p}} -->
+            <div class="submit_div">
+                <input type="submit" value="上傳">
+            </div>
+            
+            
+            
+            
+        </form>
+        
+        <div class="video_div">
+
+        {% for ufilm in videotup %}
+        
+        <video controls>
+            <source src="/static/{{ ufilm }}" >
+                Your browser does not support the video tag.
+        </video>
+            
+        {% endfor %}
+        
+        </div>
+
+
+    </div>
+
+</div>
+
+<link href="{% static 'css/05-Ufilm.css' %}" rel="stylesheet">
+
+{% endblock container %}
+
+
+{% block script %}
+
+<!-- <script src="{% static 'js/05-Ufilm.js' %}"></script> -->
+{% endblock script %}
+    

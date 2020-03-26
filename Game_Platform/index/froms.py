@@ -248,3 +248,59 @@ class PaymentForm(forms.ModelForm):
             )                           
         }
 
+class UfilmForm(forms.ModelForm):
+
+    fname = forms.CharField(
+    required = False,
+    label = '影片名稱',
+    widget = forms.TextInput(
+        attrs = {
+            'id':'fname_input',
+        },
+    ),
+    )
+
+    fintro = forms.CharField(
+    required = False,
+    label = '影片簡介',
+    widget = forms.TextInput(
+        attrs = {
+            'id':'fintro_input',
+        },
+    ),
+    )
+
+    slug = forms.CharField(
+    required = False,
+    widget = forms.TextInput(
+        attrs = {
+            'id':'slug_input',
+        },
+    ),
+    )
+
+    videofile = forms.FileField(
+    required = False,
+    label = '上傳影片',
+    widget = forms.FileInput(
+        attrs = {
+            'id':'videofile_input',
+            'accept':'video/*'
+        },
+    ),
+    )
+
+
+    class Meta:
+
+        model = FilmLibrary
+
+        fields = ['fname','fintro','slug','videofile']
+
+        # labels = {
+        #     'fname':'影片名稱',
+        #     'fintro':'影片簡介',
+        #     'videofile':'上傳影片'
+        # }
+        
+

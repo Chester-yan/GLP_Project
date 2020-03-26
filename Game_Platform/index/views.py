@@ -176,6 +176,78 @@ def Upage_views(request):
 
 
 @xframe_options_sameorigin
+def Ufilm_views(request):
+    if request.method == 'GET':
+        filmup = UfilmForm()
+        # print('Ufilm',Ufilm)
+
+        uid = request.session['uid']
+
+        # Ufilm = FilmLibrary.objects.get(user_id=uid)
+        # Ufilm = FilmLibrary.objects.all()
+        # Ufilm = FilmLibrary.objects.filter(user_id=uid)
+        # Ufilm = FilmLibrary.objects.all().values()
+        Ufilm = FilmLibrary.objects.filter(user_id=uid).values_list('videofile')
+    
+        print(Ufilm)
+        videotup = ()
+
+        for x in Ufilm:
+            print(x)
+            videotup += x
+        
+        print('videotup:',videotup)
+
+        # print(Ufilm.videofile)
+
+        
+
+
+
+
+
+        return render(request,'05-Ufilm.html',locals())
+
+    else:
+        print('上傳影片開始')
+        Ufilm = UfilmForm(request.POST)
+        filmup = FilmLibrary()
+
+        uid = request.session['uid']
+
+
+        if Ufilm.is_valid:
+
+            # filmup = FilmLibrary(**Ufilm.cleaned_data)
+            # fields = ['fname','fintro','slug','videofile']
+
+            fname = request.POST['fname']
+            fintro = request.POST['fintro']
+            # slug = request.POST['slug']
+            user_id = uid
+
+
+            if request.FILES:
+                videofile = request.FILES['videofile']
+                filmup.videofile = videofile
+
+
+            if filmup.user_id == None:
+                filmup.user_id = user_id
+
+            filmup.fname = fname
+            filmup.fintro = fintro
+            # filmup.slug = slug
+            
+            print(filmup)
+            filmup.save()
+            return HttpResponse('影片上傳成功')
+        else:
+            return HttpResponse('影片上傳失敗')
+
+        return render(request,'05-Ufilm.html',locals())
+
+@xframe_options_sameorigin
 def register_views(request):
     # 判斷get或post請求，得到用戶的請求意圖
     if request.method == 'GET':

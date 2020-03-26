@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^02-register/$',register_views,name='reg'),
     url(r'^03-login/$', login_views, name='login'),
     url(r'^04-Upage/$', Upage_views, name='upage'),
+    url(r'^05-Ufilm/$', Ufilm_views, name='ufilm'),
 
     url(r'^logout/$',logout_views),
     url(r'^check_uemail/$',check_uemail_view),

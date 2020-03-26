@@ -2,7 +2,7 @@ from django.db import models
 from creditcards import *
 from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
 
-
+from django.urls import reverse
 
 # Create your models here.
 
@@ -62,24 +62,33 @@ class FilmLibrary(models.Model):
     fintro = models.TextField(max_length=300, blank = True,  verbose_name='影片簡介')
     fquality = models.CharField(max_length=10, verbose_name='影片畫質')
 
+    slug = models.SlugField(null=True, unique=True)
+    videofile = models.FileField(upload_to='videos/%Y/%m/%d/', null=True, verbose_name="影片")
+
+
     # 以下後台連動紀錄
     fauthor = models.CharField(max_length=30, verbose_name='影片作者')
-    fdate = models.DateTimeField( verbose_name='上傳日期')
-    ftime = models.TimeField( verbose_name='影片時間')
+    fdate = models.DateTimeField(auto_now_add=True, verbose_name='上傳日期')
+    ftime = models.TimeField(null=True, verbose_name='影片時間')
     user = models.ForeignKey('User',null=True,on_delete=models.CASCADE, verbose_name='作者帳號')
 
     # 以下使用者網頁輸入
-    flike = models.IntegerField( verbose_name='按讚數')
-    fcommet = models.TextField(max_length=300, verbose_name='影片留言')
+    flike = models.IntegerField(null=True, verbose_name='按讚數')
+    fcommet = models.TextField(null=True, max_length=300, verbose_name='影片留言')
+
+
+    def get_absolute_url(self):
+        return reverse ("deploy:detail", kwargs={"slug":self.slug})
 
     def __str__(self):
         return self.fname
+
 
     class Meta:
         db_table = 'FilmLibrary'
         verbose_name = '影片庫'
         verbose_name_plural = verbose_name  
-        ordering = ['fdate']
+        ordering = ['-fdate']
 
 
 class Ucreditcard(models.Model):

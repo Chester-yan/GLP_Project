@@ -10,9 +10,9 @@
 
 /* 統一設置頁面樣式 */
 body{
-    color: rgb(140, 0, 255);
+    color: rgb(255, 255, 255);
     font: 20px 'Microsoft Yahei','微軟黑體','sans-serif'; 
-    overflow: hidden;
+    overflow: auto;
 }
 
 body::before{
