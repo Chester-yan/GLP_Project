@@ -24,20 +24,41 @@
         <form id="uinfo_edit_form" class="uinfo_block" action="{% url 'ufilm' %}" method="POST" enctype="multipart/form-data">
 
             {% csrf_token %}
+            <div class="file_upload_div">
 
-            
+                {{ filmup.videofile }}
+            </div>
+
+            <div class="VideoInfoInput_div">
+
             {% for filmup in filmup %}
-            <div class="title_div">
-                {{ filmup.label }}
-            </div>
-            <div class="video_upload_div">
-                {{ filmup }}
-            </div>
+            
+                {% if filmup.name == 'videofile' %}
+
+                    {% elif filmup.name == 'user' %}
+                    
+                {% else %}
+
+                <div class="UploadInfo_div">
+    
+                    <div class="title_div">
+                        {{ filmup.label }}
+                    </div>
+                    <div class="video_upload_div">
+                        {{ filmup }}
+                    </div>
+    
+                </div>                
+                {% endif %}
+            
             {% endfor %}
-                
+            </div>
+            
+            
+
             <!-- {{ Ufilm.as_p}} -->
             <div class="submit_div">
-                <input type="submit" value="上傳">
+                <input type="submit" value="新增影片" class="submit_input">
             </div>
             
             
@@ -46,16 +67,68 @@
         </form>
         
         <div class="video_div">
+            <div class="VideoInfoTitle_div">
+                <div class="VideoFile_div">影片</div>
+                <div class="InfoName_div">名稱</div>
+                <div class="InfoIntro_div">簡介</div>
+                <div class="VideoType_div">類型</div>
+                <div class="UploadDate_div">上傳時間</div>
+                <div class="VideoLike_div">按讚數</div>
+                <div class="VideoCommet_div">留言數</div>
+            </div>
 
-        {% for ufilm in videotup %}
-        
-        <video controls>
-            <source src="/static/{{ ufilm }}" >
-                Your browser does not support the video tag.
-        </video>
-            
+
+        {% for ufilmall in Ufilmall %}
+            <div class="VideoInfo_div">
+                {% for key,value in ufilmall.items %}
+                
+                {% if key == 'videofile' %}
+                <video controls>
+                    <source src="/static/{{ value }}" >
+                        Your browser does not support the video tag.
+                </video>
+                
+                    {% elif key == 'fname' %}
+                    <div class="InfoName_div">
+                        {{ value }}
+                    </div>
+
+                    {% elif key == 'fintro' %}
+                    <div class="InfoIntro_div">
+                        {{ value }}
+                    </div>
+
+                    {% elif key == 'ftype' %}
+                    <div class="VideoType_div">
+                        {{ value }}
+                    </div>
+                    
+                    {% elif key == 'fdate' %}
+                    <div class="UploadDate_div">
+                        {{ value }}
+                    </div>
+
+                    {% elif key == 'flike' %}
+                    <div class="VideoLike_div">
+                        {{ value }}
+                    </div>
+
+                    {% elif key == 'fcommet' %}
+                    <div class="VideoCommet_div">
+                        {{ value }}
+                    </div>
+                {% else %}
+
+                <div class="VideoValue_div">
+                    {{ value }}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+                
         {% endfor %}
-        
+            
+
         </div>
 
 

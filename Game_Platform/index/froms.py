@@ -251,7 +251,7 @@ class PaymentForm(forms.ModelForm):
 class UfilmForm(forms.ModelForm):
 
     fname = forms.CharField(
-    required = False,
+    required = True,
     label = '影片名稱',
     widget = forms.TextInput(
         attrs = {
@@ -260,8 +260,32 @@ class UfilmForm(forms.ModelForm):
     ),
     )
 
+    GAMETYPE_CHICES = (
+        ('動作','動作'),
+        ('冒險','冒險'),
+        ('射擊','射擊'),
+        ('戰略','戰略'),
+        ('角色扮演','角色扮演'),
+        ('競速','競速'),
+        ('運動','運動'),
+        ('模擬','模擬'),
+        ('益智','益智'),
+        ('格鬥','格鬥'),
+    )
+
+    ftype = forms.CharField(
+    required = True,
+    label = '影片類型',
+    widget = forms.Select(
+        choices = GAMETYPE_CHICES,
+        attrs = {
+            'id':'fname_input',
+        },
+    ),
+    )
+
     fintro = forms.CharField(
-    required = False,
+    required = True,
     label = '影片簡介',
     widget = forms.TextInput(
         attrs = {
@@ -270,18 +294,9 @@ class UfilmForm(forms.ModelForm):
     ),
     )
 
-    slug = forms.CharField(
-    required = False,
-    widget = forms.TextInput(
-        attrs = {
-            'id':'slug_input',
-        },
-    ),
-    )
-
     videofile = forms.FileField(
-    required = False,
-    label = '上傳影片',
+    required = True,
+    label = '上傳檔案',
     widget = forms.FileInput(
         attrs = {
             'id':'videofile_input',
@@ -295,7 +310,7 @@ class UfilmForm(forms.ModelForm):
 
         model = FilmLibrary
 
-        fields = ['fname','fintro','slug','videofile']
+        fields = ['videofile','fname','ftype','fintro','user']
 
         # labels = {
         #     'fname':'影片名稱',

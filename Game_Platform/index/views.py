@@ -179,17 +179,26 @@ def Upage_views(request):
 def Ufilm_views(request):
     if request.method == 'GET':
         filmup = UfilmForm()
-        # print('Ufilm',Ufilm)
+        print('filmup',filmup)
 
         uid = request.session['uid']
 
-        # Ufilm = FilmLibrary.objects.get(user_id=uid)
+        # Ufilmall = FilmLibrary.objects.get(user_id=uid)
         # Ufilm = FilmLibrary.objects.all()
-        # Ufilm = FilmLibrary.objects.filter(user_id=uid)
-        # Ufilm = FilmLibrary.objects.all().values()
+        # Ufilmall = FilmLibrary.objects.filter(user_id=uid)
+        # Ufilmall = FilmLibrary.objects.all().values()
         Ufilm = FilmLibrary.objects.filter(user_id=uid).values_list('videofile')
+        Ufilmall = FilmLibrary.objects.filter(user_id=uid).values(
+            'videofile',
+            'fname',
+            'fintro',
+            'ftype',
+            'fdate',
+            'flike',
+            'fcommet',
+            )
     
-        print(Ufilm)
+        print('Ufilmall:',Ufilmall)
         videotup = ()
 
         for x in Ufilm:
@@ -199,11 +208,6 @@ def Ufilm_views(request):
         print('videotup:',videotup)
 
         # print(Ufilm.videofile)
-
-        
-
-
-
 
 
         return render(request,'05-Ufilm.html',locals())
@@ -223,7 +227,7 @@ def Ufilm_views(request):
 
             fname = request.POST['fname']
             fintro = request.POST['fintro']
-            # slug = request.POST['slug']
+            ftype = request.POST['ftype']
             user_id = uid
 
 
@@ -236,8 +240,8 @@ def Ufilm_views(request):
                 filmup.user_id = user_id
 
             filmup.fname = fname
+            filmup.ftype = ftype
             filmup.fintro = fintro
-            # filmup.slug = slug
             
             print(filmup)
             filmup.save()
