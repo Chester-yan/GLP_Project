@@ -8,7 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{% static 'images/favicon-20200224034212535.ico' %}">
-    
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+    <script src="https://kit.fontawesome.com/4dce502740.js" crossorigin="anonymous"></script>
+
+
     {% block title %}
         
     <title>pilive</title>
@@ -56,7 +59,7 @@
     
         <div id="container" >
 
-            <ul class="sidebar">
+            <!-- <ul class="sidebar">
                 <li>
                     <a href="#">實況主排行榜</a>
                 </li>
@@ -66,14 +69,27 @@
                 <li>
                     <a href="#">實況主搜尋</a>
                 </li>
-            </ul>
+            </ul> -->
 
             <div class="main">
-                <ul class="context">
-                    <li id="li1">影片輪播</li>
-                    <li id="li2">推薦分類</li>
-                    <li id="li3">推薦頻道</li>
-                </ul>
+                <div class="context">
+                    <div id="video_carousel_div">
+                        <i class="fas fa-angle-left" id="angle_left"></i>
+                        <i class="fas fa-angle-right" id="angle_right"></i>
+
+                        <video muted id="video1" class="video1">
+                            <source src="/static/videos/2020/03/26/傳說對決_納克羅斯_精華特輯_超神逃脫反秀_必看當今聯盟最強刺客哥芋頭_7AhonQ3.mp4" type="video/mp4">
+                        </video>
+                        <video muted id="video2" class="video2">
+                            <source src="/static/videos/2020/04/02/傳說對決打野哥桃園場冠軍精華.mp4" type="video/mp4">
+                        </video>
+                        <video muted id="video3" class="video3">
+                            <source src="/static/videos/2020/04/02/傳說對決莫拉本人精華_S11細膩操作_讓敵人捉摸不透__哥芋頭.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div id="div2">推薦分類</div>
+                    <div id="div3">推薦頻道</div>
+                </div>
                 <div id="footer">底部資訊</div>
             </div>
 
@@ -85,6 +101,7 @@
             
             <iframe 
             id="show_register" 
+            name="show_register"
             src="{% url 'login' %}" 
             frameborder='0' 
             scrolling="no" 

@@ -18,7 +18,7 @@ function close_iframe(){
     
     // 向　/check_login/ 發異步請求
     $.get('/check_login/',function(data){
-        console.log(data);
+        // console.log(data);
         if (data.loginStatus == 1) {
             parent.window.location.reload()
         } else {

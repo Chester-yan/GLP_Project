@@ -72,7 +72,13 @@ def Upage_views(request):
         for key in Uinfo.keys():
             title['%s' % list(title.keys())[list(title.values()).index(key)]] = Uinfo[key]
             
-        # print(title)
+        print(title)
+        
+        cd = title['信用卡號']
+        cd = "************"+cd[-4::]
+
+        title['信用卡號'] = cd
+
         # {'頭像': '', 
         # '使用者名稱': 'boss', 
         # '信箱': 'boss@boss.com', 

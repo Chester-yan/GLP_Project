@@ -12,7 +12,7 @@
 body{
     color: rgb(255, 255, 255);
     font: 20px 'Microsoft Yahei','微軟黑體','sans-serif'; 
-    overflow: auto;
+    overflow: hidden;
 }
 
 body::before{
@@ -27,6 +27,8 @@ body::before{
     box-shadow: 0px 0px 10px rgba(0,0,0,.8);
     z-index: 999;
 }
+
+
 
 /* 清除默認樣式 */
 body,h1,h2,h3,h4,h5,h6,p,ul,ol{
@@ -108,7 +110,7 @@ a:hover{
     height: 100%;
     background-color: rgba(0,0,0,0.2);
     position: absolute;
-    /* display: none; */
+    display: none;
     /* display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -153,7 +155,7 @@ a:hover{
 .main{
     flex-basis: 300px;
     flex-grow: 100;
-    overflow: auto;
+    /* overflow: auto; */
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -197,25 +199,124 @@ a:hover{
     flex-direction: column;
 }
 
-.context>li{
+.context>div{
     padding: 20px;
     order: 1;
 }
 
-.context #li2{
+.context #div2{
     height: 200px;
     padding: 5px 20px 5px;
     background: #b3b3b3;
     order: 2;
 }
 
-.context #li3{
+.context #div3{
     height: 880px;
     padding: 5px 20px 5px;
     background: #cccccc;
     order: 3;
 }
 
+#video_carousel_div{
+    height: 150vh;
+    background: rgb(31, 31, 31);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+video{
+    /* margin: 10px; */
+    /* width: 30%; */
+    height: 50%;
+    
+    position: absolute;
+    /* object-fit: cover; */
+    /* transition: all 1.2s linear; */
+    /* z-index: 100; */   
+    /* border: 4px solid rgb(255, 238, 0); */
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.9));
+}
+
+.fa-angle-right{
+    width: 40px;
+    height: 40px;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background: rgb(36, 36, 36);
+    position: absolute;
+    left: calc(94%); 
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.fa-angle-left{
+    width: 40px;
+    height: 40px;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background: rgb(36, 36, 36);
+    position: absolute;
+    right: calc(94%); 
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.fa-angle-right:hover,.fa-angle-left:hover{
+    background: rgb(78, 78, 78);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 
+.video1{
+    opacity: 1;
+    transform: translateX(98px) scale(1);
+    top: 0px; 
+    left: calc(50% -375); 
+
+    transform: scale(1); 
+    transition: all 450ms ease 0s;
+    z-index: 3;
+
+}
+
+.video2{
+    opacity: 0;
+    transform: translateX(-47px) scale(0.75);
+    top: 0px; 
+    left: calc(50% - 375px); 
+
+    transform: translateX(20%) scale(0.85); 
+    transition: all 450ms ease 0s;
+    z-index: 2;
+
+}
+
+.video3{
+    opacity: 0;
+    transform: translateX(243px) scale(0.75);
+    top: 0px; 
+    left: calc(50% - 375px); 
+    transform: translateX(275.25px) translateX(-25%) scale(0.85); 
+
+    transform: translateX(-20%) scale(0.85); 
+    transition: all 450ms ease 0s;
+    z-index: 2;
+
+}
+ */
 
 /* 底部資訊 */
 #footer{
