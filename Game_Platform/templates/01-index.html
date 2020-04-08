@@ -36,17 +36,29 @@
             </ul>
     
             <ul class="leftnav">
-                <li class="logo">
+                <ul class="logo">
                     <a href="/">Pilive</a>
-                </li>
+                </ul>
                 <li>
                     <a href="#">直播</a>
                 </li>
                 <li>
                     <a href="#">影片搜尋</a>
                 </li>            
-                <li>
+                <li class="GameType">
                     <a href="#">遊戲類型</a>
+                    <ul class="TypeSelect">
+                        <li><a href="#">動作</a></li>
+                        <li><a href="#">冒險</a></li>
+                        <li><a href="#">射擊</a></li>
+                        <li><a href="#">戰略</a></li>
+                        <li><a href="#">角色扮演</a></li>
+                        <li><a href="#">競速</a></li>
+                        <li><a href="#">運動</a></li>
+                        <li><a href="#">模擬</a></li>
+                        <li><a href="#">益智</a></li>
+                        <li><a href="#">格鬥</a></li>
+                    </ul>
                 </li>            
                 <li>
                     <a href="#">更多</a>
@@ -77,17 +89,30 @@
                         <i class="fas fa-angle-left" id="angle_left" onclick="angle_left();"></i>
                         <i class="fas fa-angle-right" id="angle_right" onclick="angle_right();"></i>
                         
+                        {% for key,video in videolist.items %}
+
+                        {% if key == 1 %}
                         <video muted id="video1" class="video1">
-                            <source src="/static/videos/2020/03/26/傳說對決_納克羅斯_精華特輯_超神逃脫反秀_必看當今聯盟最強刺客哥芋頭_7AhonQ3.mp4" type="video/mp4">
+                            <source src="/static/{{ video }}" type="video/mp4">
                         </video>
-                        <video muted id="video2" class="video2">
-                            <source src="/static/videos/2020/04/02/傳說對決打野哥桃園場冠軍精華.mp4" type="video/mp4">
-                        </video>
-                        <video muted id="video3" class="video3">
-                            <source src="/static/videos/2020/04/02/傳說對決莫拉本人精華_S11細膩操作_讓敵人捉摸不透__哥芋頭.mp4" type="video/mp4">
-                        </video>
+                        
+                            {% elif key == 2 %}
+                            <video muted id="video2" class="video2">
+                                <source src="/static/{{ video }}" type="video/mp4">
+                            </video>
+                            {% elif key == 3 %}
+                            <video muted id="video3" class="video3">
+                                <source src="/static/{{ video }}" type="video/mp4">
+                            </video>
+                        {% endif %}
+
+                        {% endfor %}
                     </div>
-                    <div id="div2">推薦分類</div>
+                    <div id="div2">推薦分類
+                        
+
+                            
+                    </div>
                     <div id="div3">推薦頻道</div>
                 </div>
                 <div id="footer">底部資訊</div>

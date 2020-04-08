@@ -43,7 +43,7 @@ a{
 }
 
 /* 變換效果 */
-a:hover{
+.leftnav>li:hover{
     cursor: pointer;
 }
 
@@ -53,7 +53,32 @@ a:hover{
 
 .leftnav>li:hover{
     background: rgb(105, 156, 32);
+
 }
+
+.GameType a{
+    padding: 0px 20px;
+}
+
+
+.GameType:hover{
+
+}
+
+
+/* 
+.TypeSelect{
+    background: #72B01D;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+} */
+
+
+
+
 
 
 /* 整體排版 */
@@ -66,6 +91,7 @@ a:hover{
 .logo{
     width: 30px;
     height: 26px;
+    padding: 0 20px;
     margin: 8px 8px 8px 20px;
     border: 4px solid rgb(255, 238, 0);
     border-radius: 6px;
@@ -91,7 +117,7 @@ a:hover{
     font-size: 20px;
     line-height: 50px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     order: 1;
     z-index: 800;
@@ -122,10 +148,17 @@ a:hover{
 
 
 /* 導航樣式 */
+.logo{
+    display: flex;
+}
 
 .leftnav{
     display: flex;
     order: 1;
+}
+
+.leftnav li{
+    height: 50px;
 }
 
 .rightnav{
@@ -134,13 +167,42 @@ a:hover{
     order: 2;
 }
 
-.rightnav>li{
-    padding: 0 20px;
+.rightnav li{
+    cursor: pointer;
 }
 
-.leftnav>li{
-    padding: 0 20px;
+.rightnav>li{
+    padding: 0px 20px;
 }
+
+.leftnav a{
+    padding: 0px 20px;
+
+}
+
+.TypeSelect{
+    background: #72B01D;
+}
+
+.TypeSelect li{
+    display: none;
+}
+
+.GameType:hover li{
+    display: block;
+}
+/* 
+li.GameType li:hover li{
+    display: flex;
+}
+*/
+
+
+.TypeSelect li:hover{
+    background: rgb(105, 156, 32);
+} 
+
+
 
 
 /* 主要內容 */
@@ -279,45 +341,6 @@ video{
 
 
 
-
-/* 
-.video1{
-    opacity: 1;
-    transform: translateX(98px) scale(1);
-    top: 0px; 
-    left: calc(50% -375); 
-
-    transform: scale(1); 
-    transition: all 450ms ease 0s;
-    z-index: 3;
-
-}
-
-.video2{
-    opacity: 0;
-    transform: translateX(-47px) scale(0.75);
-    top: 0px; 
-    left: calc(50% - 375px); 
-
-    transform: translateX(20%) scale(0.85); 
-    transition: all 450ms ease 0s;
-    z-index: 2;
-
-}
-
-.video3{
-    opacity: 0;
-    transform: translateX(243px) scale(0.75);
-    top: 0px; 
-    left: calc(50% - 375px); 
-    transform: translateX(275.25px) translateX(-25%) scale(0.85); 
-
-    transform: translateX(-20%) scale(0.85); 
-    transition: all 450ms ease 0s;
-    z-index: 2;
-
-}
- */
 
 /* 底部資訊 */
 #footer{

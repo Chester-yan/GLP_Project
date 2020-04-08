@@ -21,7 +21,20 @@ from .froms import *
 # Create your views here.
 @xframe_options_sameorigin
 def index_views(request):
-    return render(request,'01-index.html')
+    if request.method == 'GET':
+        Ufilm = FilmLibrary.objects.values_list('videofile')
+        
+        VideoPathList = ()
+        for videopath in Ufilm:
+            VideoPathList += videopath
+        
+        videolist = {}
+        key = 0
+        for x in VideoPathList:
+            key += 1
+            videolist[key] = x
+
+        return render(request,'01-index.html',locals())
 
 @xframe_options_sameorigin
 def Upage_views(request):
@@ -73,7 +86,7 @@ def Upage_views(request):
             title['%s' % list(title.keys())[list(title.values()).index(key)]] = Uinfo[key]
             
         print(title)
-        
+
         cd = title['信用卡號']
         cd = "************"+cd[-4::]
 
