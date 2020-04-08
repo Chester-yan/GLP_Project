@@ -60,28 +60,47 @@ var timerVideo1 ;
 var timerVideo2 ;
 var timerVideo3 ;
 
-function video1_onended(){
-	video1.onended()
-	clearInterval(timerVideo1);
+video1.addEventListener('play',function(){
+	video1play = true
+	video1pause = false
 
-}
+	video2play = false
+	video3play = false
 
-function video2_onended(){
-	video2.onended()
-	clearInterval(timerVideo2);
+},false)
+video1.addEventListener('pause',function(){
+	video1pause = true
+	video1play = false
+},false)
 
-}
+video2.addEventListener('play',function(){
+	video2play = true
+	video2pause = false
 
-function video3_onended(){
-	video3.onended()
-	clearInterval(timerVideo3);
+	video1play = false
+	video3play = false
 
-}
+},false)
+video2.addEventListener('pause',function(){
+	video2pause = true
+	video2play = false
+},false)
+
+video3.addEventListener('play',function(){
+	video3play = true
+	video3pause = false
+
+	video1play = false
+	video2play = false
+},false)
+video3.addEventListener('pause',function(){
+	video3pause = true
+	video3play = false
+},false)
+
 
 $(function autoplay(){
-	video1.play()
-	video2.pause()
-	video3.pause()
+	video1onplay()
 
 	$('#video1,#video2,#video3').css('transition','all 450ms ease 0s')
 	
@@ -91,45 +110,17 @@ $(function autoplay(){
 
 	$('#video3').css({'transform':'translateX(-20%) scale(0.85)','z-index':'2'})
 
-	timerVideo1 = setInterval(video1_onended,10000);
 
 });
 
 
-video1.onended = function (){
-	video2.play()
-	video1.pause()
-	video3.pause()
-
-	$('#video2').css({'transform':'scale(1)','z-index':'3'})
-
-	$('#video3').css({'transform':'translateX(20%) scale(0.85)','z-index':'2'})
-
-	$('#video1').css({'transform':'translateX(-20%) scale(0.85)','z-index':'2'})
-
-	timerVideo2 = setInterval(video2_onended,10000);
-
-}
-
-video2.onended = function (){
-	video3.play()
-	video1.pause()
-	video2.pause()
-
-	$('#video3').css({'transform':'scale(1)','z-index':'3'})
-
-	$('#video1').css({'transform':'translateX(20%) scale(0.85)','z-index':'2'})
-
-	$('#video2').css({'transform':'translateX(-20%) scale(0.85)','z-index':'2'})
-
-	timerVideo3 = setInterval(video3_onended,10000);
-
-}
-
-video3.onended = function (){
-	video1.play()
-	video2.pause()
-	video3.pause()
+function video1onplay(){
+	clearInterval(timerVideo3);
+	clearInterval(timerVideo2);
+	video1.currentTime = 20;
+	video1.play();
+	video2.pause();
+	video3.pause();
 
 	$('#video1').css({'transform':'scale(1)','z-index':'3'})
 
@@ -137,33 +128,78 @@ video3.onended = function (){
 
 	$('#video3').css({'transform':'translateX(-20%) scale(0.85)','z-index':'2'})
 
-	timerVideo1 = setInterval(video1_onended,10000);
+	timerVideo1 = setInterval(video2onplay,5000);
 
+}
+
+function video2onplay(){
+	clearInterval(timerVideo1);
+	clearInterval(timerVideo3);
+	video2.currentTime = 20;
+	video2.play();
+	video1.pause();
+	video3.pause();
+
+	$('#video2').css({'transform':'scale(1)','z-index':'3'})
+
+	$('#video3').css({'transform':'translateX(20%) scale(0.85)','z-index':'2'})
+
+	$('#video1').css({'transform':'translateX(-20%) scale(0.85)','z-index':'2'})
+
+	timerVideo2 = setInterval(video3onplay,5000);
+
+}
+
+function video3onplay(){
+	clearInterval(timerVideo2);
+	clearInterval(timerVideo1);
+	video3.currentTime = 20;
+	video3.play();
+	video1.pause();
+	video2.pause();
+
+	$('#video3').css({'transform':'scale(1)','z-index':'3'})
+
+	$('#video1').css({'transform':'translateX(20%) scale(0.85)','z-index':'2'})
+
+	$('#video2').css({'transform':'translateX(-20%) scale(0.85)','z-index':'2'})
+
+	timerVideo3 = setInterval(video1onplay,5000);
 
 }
 
 
-// video1.playbackRate = 10;
-// video2.playbackRate = 10;
-// video3.playbackRate = 10;
+function angle_left() {
 
-// video1.onended = function (){
-// 	video2.play();
-// 	video1.style.opacity = 0;
-// 	video2.style.opacity = 1;
-// }
+	if (video1play) {
+		video3onplay()
+	}
+		
+	if (video2play) {
+		video1onplay()
+	}
 
-// video2.onended = function(){
-// 	video3.play();
-// 	video2.style.opacity = 0;
-// 	video3.style.opacity = 1;
-// }
+	if (video3play) {
+		video2onplay()
+	}
 
-// video3.onended = function(){
-// 	video1.play();
-// 	video3.style.opacity = 0;
-// 	video1.style.opacity = 1;
-// }
+}
+
+function angle_right() {
+
+	if (video1play) {
+		video2onplay()
+	}
+		
+	if (video2play) {
+		video3onplay()
+	}
+
+	if (video3play) {
+		video1onplay()
+	}
+
+}
 
 
 /* 異步向服務器發出請求，檢查用戶是否處於登入狀態 */
