@@ -1,4 +1,4 @@
-window.onload = dis_regi;
+window.onload = function (){dis_regi(); GoGameTypePage(); check_login(); };
 
 var regi_block = document.getElementById("register_block");
 function dis_regi() {
@@ -218,9 +218,41 @@ function check_login(){
 
 
 
-$(function(){
-    /* 調用check_login檢查登入狀態 */
-	check_login();
-});
+// $(function(){
+//     /* 調用check_login檢查登入狀態 */
+// 	check_login();
+// });
+
+
+function GoGameTypePage(){
+	// var $obj_list = $("#TypeSelect").html('li').val()
+	var obj_list = document.getElementById('TypeSelect').getElementsByTagName('li');
+	// console.log($obj_list)
+	console.log(obj_list)
+	for ( i = 0; i < obj_list.length; i++) {
+		// var $click_value = $obj_list[i].onclick
+		// console.log($click_value)
+		obj_list[i].onclick = function(){
+			var click_value = this.innerHTML
+			console.log(click_value)
+			var storage = window.sessionStorage
+			stroage['GameType'] = click_value
+			
+			// window.location.href=`index.html?nid=`;
+
+
+			// function getvalue () {
+			// 	var url=window.location.href;
+			// 	var url_param = url.split("?")[1];
+			// 	var url_param_arr = url_param.split("=");
+			// 	var nid ={nid:url_param_arr[1]};
+			// 	preview_index(nid);//处理函数，发送请求
+		
+
+		}
+	}
+}
+
+// window.onload = GoGameTypePage()
 
 

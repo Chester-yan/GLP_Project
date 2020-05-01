@@ -21,6 +21,12 @@ from .froms import *
 # Create your views here.
 @xframe_options_sameorigin
 def index_views(request):
+    # GameType1 = request.POST.get('sessionStorage')
+    GameType2 = request.POST.get('GameType')
+
+    # print('GameType1:',GameType1)
+    print('GameType2:',GameType2)
+
     if request.method == 'GET':
         Ufilm = FilmLibrary.objects.values_list('videofile')
         
@@ -34,7 +40,29 @@ def index_views(request):
             key += 1
             videolist[key] = x
 
+
+        # GameType = request.session['sessionStorage']
+        # print(GameType)
+
         return render(request,'01-index.html',locals())
+    else:
+        if request.method == 'POST':
+
+            # GameType1 = request.POST['sessionStorage']
+            # GameType2 = request.POST['GameType']
+
+            # print('GameType1:',GameType1)
+            # print('GameType2:',GameType2)
+            print('POST_ELSE')
+
+            GameType2 = request.POST.get('GameType')
+
+            print('GameType2:',GameType2)
+
+            # GameType = request.session['GameType']
+            # print(GameType)
+        
+        return render(request,'01-index.html')
 
 @xframe_options_sameorigin
 def Upage_views(request):
@@ -197,6 +225,7 @@ def Upage_views(request):
 @xframe_options_sameorigin
 def Ufilm_views(request):
     if request.method == 'GET':
+
         filmup = UfilmForm()
         print('filmup',filmup)
 
@@ -241,6 +270,9 @@ def Ufilm_views(request):
 
         if Ufilm.is_valid:
 
+            url = request.META.get('HTTP_REFERER','/')
+
+
             # filmup = FilmLibrary(**Ufilm.cleaned_data)
             # fields = ['fname','fintro','slug','videofile']
 
@@ -264,7 +296,11 @@ def Ufilm_views(request):
             
             print(filmup)
             filmup.save()
-            return HttpResponse('影片上傳成功')
+            # return HttpResponse('影片上傳成功')
+            # return render(request,'05-Ufilm.html',locals())
+            resp = redirect(url)
+            return resp   
+
         else:
             return HttpResponse('影片上傳失敗')
 
@@ -300,6 +336,7 @@ def register_views(request):
 
         else:
             return render(request,'02-register.html',locals())
+
 
 
 def check_uname_view(request):

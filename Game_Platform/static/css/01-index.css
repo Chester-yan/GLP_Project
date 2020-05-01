@@ -181,27 +181,33 @@ a{
 }
 
 .TypeSelect{
-    background: #72B01D;
+    background: rgb(198, 235, 146);
+}
+
+.TypeSelect a{
+    color: rgb(80, 80, 80);
+
 }
 
 .TypeSelect li{
     display: none;
+    justify-content: start;
+
 }
 
 .GameType:hover li{
-    display: block;
-}
-/* 
-li.GameType li:hover li{
     display: flex;
 }
-*/
 
 
 .TypeSelect li:hover{
-    background: rgb(105, 156, 32);
+    background: rgb(169, 201, 125);
+    
 } 
 
+.TypeSelect li{
+
+} 
 
 
 
@@ -290,7 +296,7 @@ li.GameType li:hover li{
 
 }
 
-video{
+#video_carousel_div>video{
     /* margin: 10px; */
     /* width: 30%; */
     height: 50%;

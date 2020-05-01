@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{% static 'images/favicon-20200224034212535.ico' %}">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
     <script src="https://kit.fontawesome.com/4dce502740.js" crossorigin="anonymous"></script>
 
 
@@ -47,17 +46,18 @@
                 </li>            
                 <li class="GameType">
                     <a href="#">遊戲類型</a>
-                    <ul class="TypeSelect">
-                        <li><a href="#">動作</a></li>
-                        <li><a href="#">冒險</a></li>
-                        <li><a href="#">射擊</a></li>
-                        <li><a href="#">戰略</a></li>
-                        <li><a href="#">角色扮演</a></li>
-                        <li><a href="#">競速</a></li>
-                        <li><a href="#">運動</a></li>
-                        <li><a href="#">模擬</a></li>
-                        <li><a href="#">益智</a></li>
-                        <li><a href="#">格鬥</a></li>
+                    <ul id="TypeSelect" class="TypeSelect" onclick="GoGameTypePage();">
+                        
+                        <li><a href="/GameTypePage/ACG">動作</a></li>
+                        <li><a href="">冒險</a></li>
+                        <li><a href="">射擊</a></li>
+                        <li><a href="">戰略</a></li>
+                        <li><a href="">角色扮演</a></li>
+                        <li><a href="">競速</a></li>
+                        <li><a href="">運動</a></li>
+                        <li><a href="">模擬</a></li>
+                        <li><a href="">益智</a></li>
+                        <li><a href="">格鬥</a></li>
                     </ul>
                 </li>            
                 <li>
