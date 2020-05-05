@@ -1,4 +1,4 @@
-window.onload = function (){dis_regi(); GoGameTypePage(); check_login(); };
+window.onload = function (){dis_regi(); check_login(); };
 
 var regi_block = document.getElementById("register_block");
 function dis_regi() {
@@ -12,7 +12,6 @@ function cancle() {
 function show() {
     regi_block.style.display = "block";
 };  
-
 
 // function show() {
 // 	$('#register_block').css('display','block');
@@ -202,6 +201,7 @@ function angle_right() {
 }
 
 
+
 /* 異步向服務器發出請求，檢查用戶是否處於登入狀態 */
 function check_login(){
 	// 向　/check_login/ 發異步請求
@@ -210,7 +210,9 @@ function check_login(){
 		if(data.loginStatus == 0){
 			html += "<a onclick='show();'>註冊/登入</a>";
 		}else{ 
-            html += "<a href='/logout'>登出</a>";
+			var user_list = "<a >會員</a><ul id='UserList' class='UserList'><li><a href='/04-Upage'>會員中心</a></li><li><a href='/05-Ufilm'>影片庫</a></li><li><a href='/logout'>登出</a></li></ul>"
+			html += user_list;
+            // html += "<a href='/logout'>登出</a>";
 		}
         $("#login").html(html);
 	},'json');
@@ -224,35 +226,6 @@ function check_login(){
 // });
 
 
-function GoGameTypePage(){
-	// var $obj_list = $("#TypeSelect").html('li').val()
-	var obj_list = document.getElementById('TypeSelect').getElementsByTagName('li');
-	// console.log($obj_list)
-	console.log(obj_list)
-	for ( i = 0; i < obj_list.length; i++) {
-		// var $click_value = $obj_list[i].onclick
-		// console.log($click_value)
-		obj_list[i].onclick = function(){
-			var click_value = this.innerHTML
-			console.log(click_value)
-			var storage = window.sessionStorage
-			stroage['GameType'] = click_value
-			
-			// window.location.href=`index.html?nid=`;
 
-
-			// function getvalue () {
-			// 	var url=window.location.href;
-			// 	var url_param = url.split("?")[1];
-			// 	var url_param_arr = url_param.split("=");
-			// 	var nid ={nid:url_param_arr[1]};
-			// 	preview_index(nid);//处理函数，发送请求
-		
-
-		}
-	}
-}
-
-// window.onload = GoGameTypePage()
 
 

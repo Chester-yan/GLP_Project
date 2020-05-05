@@ -60,10 +60,11 @@ a{
     padding: 0px 20px;
 }
 
-
-.GameType:hover{
-
+.login_div a{
+    padding: 0px 20px;
 }
+
+
 
 
 /* 
@@ -168,11 +169,12 @@ a{
 }
 
 .rightnav li{
+    height: 50px;
     cursor: pointer;
 }
 
-.rightnav>li{
-    padding: 0px 20px;
+.login_div {
+    width: 120px;
 }
 
 .leftnav a{
@@ -189,11 +191,15 @@ a{
 
 }
 
+
+
 .TypeSelect li{
     display: none;
     justify-content: start;
 
 }
+
+
 
 .GameType:hover li{
     display: flex;
@@ -202,12 +208,30 @@ a{
 
 .TypeSelect li:hover{
     background: rgb(169, 201, 125);
-    
 } 
 
-.TypeSelect li{
+.UserList li{
+    display: none;
+    justify-content: start;
+}
 
+.UserList{
+    background: rgb(198, 235, 146);
+
+}
+
+.UserList a{
+    color: rgb(80, 80, 80);
+
+}
+
+.UserList li:hover{
+    background: rgb(169, 201, 125);
 } 
+
+.login_div:hover li{
+    display: flex;
+}
 
 
 

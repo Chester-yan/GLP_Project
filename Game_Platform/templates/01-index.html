@@ -26,8 +26,13 @@
         <div id="nav">
         
             <ul class="rightnav">
-                <li id="login">
-
+                <li id="login" class="login_div">
+                    <!-- <a >會員</a>
+                    <ul id='UserList' class='UserList'>
+                        <li><a href='/04-Upage'>會員中心</a></li>
+                        <li><a href='/05-Ufilm'>影片庫</a></li>
+                        <li><a href='/logout'>登出</a></li>
+                    </ul> -->
                 </li>
                 <li id="track">
                     <a href="#">追蹤</a>
@@ -46,23 +51,25 @@
                 </li>            
                 <li class="GameType">
                     <a href="#">遊戲類型</a>
-                    <ul id="TypeSelect" class="TypeSelect" onclick="GoGameTypePage();">
+                    <ul id="TypeSelect" class="TypeSelect">
                         
                         <li><a href="/GameTypePage/ACG">動作</a></li>
-                        <li><a href="">冒險</a></li>
-                        <li><a href="">射擊</a></li>
-                        <li><a href="">戰略</a></li>
-                        <li><a href="">角色扮演</a></li>
-                        <li><a href="">競速</a></li>
-                        <li><a href="">運動</a></li>
-                        <li><a href="">模擬</a></li>
-                        <li><a href="">益智</a></li>
-                        <li><a href="">格鬥</a></li>
+                        <li><a href="/GameTypePage/AVG">冒險</a></li>
+                        <li><a href="/GameTypePage/STG">射擊</a></li>
+                        <li><a href="/GameTypePage/RTS">戰略</a></li>
+                        <li><a href="/GameTypePage/RPG">角色扮演</a></li>
+                        <li><a href="/GameTypePage/RCG">競速</a></li>
+                        <li><a href="/GameTypePage/SPG">運動</a></li>
+                        <li><a href="/GameTypePage/SLG">模擬</a></li>
+                        <li><a href="/GameTypePage/PZG">益智</a></li>
+                        <li><a href="/GameTypePage/FTG">格鬥</a></li>
+
                     </ul>
                 </li>            
                 <li>
-                    <a href="#">更多</a>
+                    <a href="#" onclick="stop();">更多</a>
                 </li>
+                
             </ul>
 
         </div>

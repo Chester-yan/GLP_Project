@@ -12,21 +12,22 @@
 {% block container %}
 <div id="container">
 
-    <p>動作遊戲</p>
-        
-    {% for Ufilmall in Ufilmall %}
-    <div>
-        
-        {% for key,value in ufilmall.items %}
-        <video controls>
-            <source src="/static/{{ value }}" >
-                Your browser does not support the video tag.
-        </video>
-        {% endfor %}
-
-    </div>
-    {% endfor %}
+    {% for ufilmall in Ufilmall %}
+        <div id="video_div" class="video_div">
+            {% for key,value in ufilmall.items %}
+                
+                {% if  key == 'videofile'%}
+                    <video muted controls poster id="result_video">
+                        <source src="/static/{{ value }}" >
+                            Your browser does not support the video tag.
+                    </video>
+                {% else %}
+                    <p>{{ value }}</p> 
+                {% endif %}
             
+            {% endfor %}
+        </div>
+    {% endfor %}
 
 </div>
 {% endblock container %}

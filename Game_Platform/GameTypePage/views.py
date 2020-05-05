@@ -21,25 +21,177 @@ from index.froms import *
 def ACG_views(request):
     
     if request.method == 'GET':
-        Ufilm = FilmLibrary.objects.filter.values_list('videofile')
-        Ufilmall = FilmLibrary.objects.filter.values(
+        Ufilmall = FilmLibrary.objects.filter(ftype='動作').values(
             'videofile',
             'fname',
             'fintro',
-            'ftype',
             'fdate',
             'flike',
             'fcommet',
             )
     
         print('Ufilmall:',Ufilmall)
-        videotup = ()
 
-        for x in Ufilm:
-            print(x)
-            videotup += x
-        
-        print('videotup:',videotup)
+
+        return render(request,'ACG.html',locals())
+
+def AVG_views(request):
+    
+    if request.method == 'GET':
+        Ufilmall = FilmLibrary.objects.filter(ftype='冒險').values(
+            'videofile',
+            'fname',
+            'fintro',
+            'fdate',
+            'flike',
+            'fcommet',
+            )
+    
+        print('Ufilmall:',Ufilmall)
+
+
+        return render(request,'ACG.html',locals())
+
+
+def STG_views(request):
+    
+    if request.method == 'GET':
+        Ufilmall = FilmLibrary.objects.filter(ftype='射擊').values(
+            'videofile',
+            'fname',
+            'fintro',
+            'fdate',
+            'flike',
+            'fcommet',
+            )
+    
+        print('Ufilmall:',Ufilmall)
+
+
+        return render(request,'ACG.html',locals())
+
+
+def RTS_views(request):
+    
+    if request.method == 'GET':
+        Ufilmall = FilmLibrary.objects.filter(ftype='戰略').values(
+            'videofile',
+            'fname',
+            'fintro',
+            'fdate',
+            'flike',
+            'fcommet',
+            )
+    
+        print('Ufilmall:',Ufilmall)
+
+
+        return render(request,'ACG.html',locals())
+
+
+def RPG_views(request):
+    
+    if request.method == 'GET':
+        Ufilmall = FilmLibrary.objects.filter(ftype='角色扮演').values(
+            'videofile',
+            'fname',
+            'fintro',
+            'fdate',
+            'flike',
+            'fcommet',
+            )
+    
+        print('Ufilmall:',Ufilmall)
+
+
+        return render(request,'ACG.html',locals())
+
+
+def RCG_views(request):
+    
+    if request.method == 'GET':
+        Ufilmall = FilmLibrary.objects.filter(ftype='競速').values(
+            'videofile',
+            'fname',
+            'fintro',
+            'fdate',
+            'flike',
+            'fcommet',
+            )
+    
+        print('Ufilmall:',Ufilmall)
+
+
+        return render(request,'ACG.html',locals())
+
+
+def SPG_views(request):
+    
+    if request.method == 'GET':
+        Ufilmall = FilmLibrary.objects.filter(ftype='運動').values(
+            'videofile',
+            'fname',
+            'fintro',
+            'fdate',
+            'flike',
+            'fcommet',
+            )
+    
+        print('Ufilmall:',Ufilmall)
+
+
+        return render(request,'ACG.html',locals())
+
+
+def SLG_views(request):
+    
+    if request.method == 'GET':
+        Ufilmall = FilmLibrary.objects.filter(ftype='模擬').values(
+            'videofile',
+            'fname',
+            'fintro',
+            'fdate',
+            'flike',
+            'fcommet',
+            )
+    
+        print('Ufilmall:',Ufilmall)
+
+
+        return render(request,'ACG.html',locals())
+
+
+def PZG_views(request):
+    
+    if request.method == 'GET':
+        Ufilmall = FilmLibrary.objects.filter(ftype='益智').values(
+            'videofile',
+            'fname',
+            'fintro',
+            'fdate',
+            'flike',
+            'fcommet',
+            )
+    
+        print('Ufilmall:',Ufilmall)
+
+
+        return render(request,'ACG.html',locals())
+
+
+def FTG_views(request):
+    
+    if request.method == 'GET':
+        Ufilmall = FilmLibrary.objects.filter(ftype='格鬥').values(
+            'videofile',
+            'fname',
+            'fintro',
+            'fdate',
+            'flike',
+            'fcommet',
+            )
+    
+        print('Ufilmall:',Ufilmall)
 
 
         return render(request,'ACG.html',locals())
