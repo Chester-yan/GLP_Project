@@ -1,0 +1,41 @@
+{% extends '01-index.html' %}
+{% load static %}
+
+{% block title %}
+
+<title>遊戲類型</title>
+
+{% endblock title %}
+
+
+
+{% block container %}
+<div id="container">
+
+    {% for ufilmall in Ufilmall %}
+        <div id="video_div" class="video_div">
+            {% for key,value in ufilmall.items %}
+                
+                {% if  key == 'videofile'%}
+                    <video muted controls poster id="result_video">
+                        <source src="/static/{{ value }}" >
+                            Your browser does not support the video tag.
+                    </video>
+                {% else %}
+                    <p>{{ value }}</p> 
+                {% endif %}
+            
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+</div>
+{% endblock container %}
+
+{% block script %}
+
+<link href="{% static 'css/GameTypePage_ACG.css' %}" rel="stylesheet">
+
+
+{% endblock script %}
+    

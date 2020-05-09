@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^04-Upage/$', Upage_views, name='upage'),
     url(r'^05-Ufilm/$', Ufilm_views, name='ufilm'),
     url(r'^GameTypePage/', include('GameTypePage.urls')),
+    url(r'^Search_Fun/', include('Search_Fun.urls')),
 
     url(r'^logout/$',logout_views),
     url(r'^check_uemail/$',check_uemail_view),

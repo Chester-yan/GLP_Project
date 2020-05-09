@@ -33,7 +33,7 @@ def ACG_views(request):
         print('Ufilmall:',Ufilmall)
 
 
-        return render(request,'ACG.html',locals())
+        return render(request,'06-GameTypePage.html',locals())
 
 def AVG_views(request):
     
@@ -50,7 +50,7 @@ def AVG_views(request):
         print('Ufilmall:',Ufilmall)
 
 
-        return render(request,'ACG.html',locals())
+        return render(request,'06-GameTypePage.html',locals())
 
 
 def STG_views(request):
@@ -68,7 +68,7 @@ def STG_views(request):
         print('Ufilmall:',Ufilmall)
 
 
-        return render(request,'ACG.html',locals())
+        return render(request,'06-GameTypePage.html',locals())
 
 
 def RTS_views(request):
@@ -86,7 +86,7 @@ def RTS_views(request):
         print('Ufilmall:',Ufilmall)
 
 
-        return render(request,'ACG.html',locals())
+        return render(request,'06-GameTypePage.html',locals())
 
 
 def RPG_views(request):
@@ -104,7 +104,7 @@ def RPG_views(request):
         print('Ufilmall:',Ufilmall)
 
 
-        return render(request,'ACG.html',locals())
+        return render(request,'06-GameTypePage.html',locals())
 
 
 def RCG_views(request):
@@ -122,7 +122,7 @@ def RCG_views(request):
         print('Ufilmall:',Ufilmall)
 
 
-        return render(request,'ACG.html',locals())
+        return render(request,'06-GameTypePage.html',locals())
 
 
 def SPG_views(request):
@@ -140,7 +140,7 @@ def SPG_views(request):
         print('Ufilmall:',Ufilmall)
 
 
-        return render(request,'ACG.html',locals())
+        return render(request,'06-GameTypePage.html',locals())
 
 
 def SLG_views(request):
@@ -158,7 +158,7 @@ def SLG_views(request):
         print('Ufilmall:',Ufilmall)
 
 
-        return render(request,'ACG.html',locals())
+        return render(request,'06-GameTypePage.html',locals())
 
 
 def PZG_views(request):
@@ -176,7 +176,7 @@ def PZG_views(request):
         print('Ufilmall:',Ufilmall)
 
 
-        return render(request,'ACG.html',locals())
+        return render(request,'06-GameTypePage.html',locals())
 
 
 def FTG_views(request):
@@ -194,4 +194,4 @@ def FTG_views(request):
         print('Ufilmall:',Ufilmall)
 
 
-        return render(request,'ACG.html',locals())
+        return render(request,'06-GameTypePage.html',locals())

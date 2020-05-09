@@ -199,6 +199,10 @@ a{
 
 }
 
+#track{
+    height: 50px;
+    padding: 5px 5px,
+}
 
 
 .GameType:hover li{
@@ -372,6 +376,8 @@ a{
 
 
 
+
+
 /* 底部資訊 */
 #footer{
     height: 50px;
@@ -392,3 +398,82 @@ a{
     left:40%;
     top:8%;
 }
+
+
+/* 收尋框樣式 */
+
+.box{
+    /* margin: 100px auto; */
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
+
+
+.search_box{
+    width: 300px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+
+    display: flex;
+    /* justify-content: center; */
+    align-self: center;
+}
+
+.search_box input#search{
+    width: 300px;
+    height: 40px;
+    background: #2b303b;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #63717f;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+
+    -webkit-transition: background .55s ease;
+    -moz-transition: background .55s ease;
+    -ms-transition: background .55s ease;
+    -o-transition: background .55s ease;
+    transition: background .55s ease;
+
+    
+  }
+
+  .search_box input#search::-webkit-input-placeholder {
+    color: #65737e;
+ }
+  
+ .search_box input#search:-moz-placeholder { /* Firefox 18- */
+    color: #65737e;  
+ }
+  
+ .search_box input#search::-moz-placeholder {  /* Firefox 19+ */
+    color: #65737e;  
+ }
+  
+ .search_box input#search:-ms-input-placeholder {  
+    color: #65737e;  
+ }
+
+ .search_box .icon{
+    position: absolute;
+    top: -10%;
+    margin-left: 14px;
+/*     margin-top: 1px; */
+/*     z-index: 1; */
+    color: #4f5b66;
+  } 
+
+  .search_box input#search:hover, .search_box input#search:focus, .search_box input#search:active{
+    outline:none;
+    background: #ffffff;
+  }
+
+  

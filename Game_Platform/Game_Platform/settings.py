@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'index',
     'GameTypePage',
+    'Search_Fun',
     'werkzeug_debugger_runserver',
     'django_extensions',
     'sslserver'
